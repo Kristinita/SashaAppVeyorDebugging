@@ -3,13 +3,13 @@ init:
   - set PYTHONIOENCODING=utf-8
 
 environment:
-  nodejs_version: "9.4.0"
 
   matrix:
 
     - PYTHON: "C:\\Python36-x64"
       PYTHON_VERSION: "3.6.4"
       PYTHON_ARCH: "64"
+      nodejs_version: "9.4.0"
 
 platform: x64
 
