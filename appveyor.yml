@@ -11,6 +11,7 @@ platform: x64
 init:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   - chcp 65001
+  - set PYTHONIOENCODING=utf-8
 
 install:
   - pip install pipenv
