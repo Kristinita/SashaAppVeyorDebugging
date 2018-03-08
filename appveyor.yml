@@ -12,6 +12,7 @@ init:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
 install:
+  - pip install psutil
   - pip install pipenv
   - pipenv install --dev
 
