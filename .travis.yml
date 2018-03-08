@@ -2,6 +2,9 @@ language: python
 
 python: 3.6
 
+init:
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+
 install:
   - pip install pipenv
   - pipenv install --dev
