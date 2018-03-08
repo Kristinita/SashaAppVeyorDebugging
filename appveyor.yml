@@ -12,7 +12,8 @@ init:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
 install:
-  - chcp 65001 && pip install pipenv && pipenv install --dev
+  - pip install pipenv
+  - pipenv install --dev
 
 build_script:
 
