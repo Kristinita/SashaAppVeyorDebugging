@@ -1,0 +1,27 @@
+{
+  "name": "sashagruntdebugging",
+  "version": "0.1.0",
+  "description": "Grunt debugging",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.2",
+    "grunt-hello-world": "^0.1.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kristinita/SashaGruntDebugging.git"
+  },
+  "keywords": [
+    "SashaGruntDebugging"
+  ],
+  "author": "Sasha Chernykh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kristinita/SashaGruntDebugging/issues"
+  },
+  "homepage": "https://github.com/Kristinita/SashaGruntDebugging#readme"
+}

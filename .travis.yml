@@ -1,12 +1,10 @@
-language: python
-
-python: 3.6
-
+env:
+  - GRUNT_COMMAND=default
+  - GRUNT_COMMAND=publish
 
 install:
-  - pip install pipenv
-  - pipenv install --dev
+  - npm install -g grunt-cli
+  - npm install
 
 script:
-  - pipenv --version
-  - pelican --version
+  - grunt $GRUNT_COMMAND
