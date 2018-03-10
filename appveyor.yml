@@ -7,6 +7,7 @@ environment:
 
 install:
 
+  - choco install nodejs -y
   - npm install -g grunt-cli
   - npm install
 
