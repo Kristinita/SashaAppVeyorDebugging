@@ -7,3 +7,11 @@ module.exports = (grunt) ->
 		hello_world:
 			world:
 				name: "world!"
+
+	grunt.registerTask 'default', [
+		'hello_world'
+	]
+
+	grunt.registerTask 'publish', [
+		'hello_world'
+	]

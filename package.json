@@ -6,7 +6,9 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "^1.0.2",
-    "grunt-hello-world": "^0.1.0"
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-hello-world": "^0.1.0",
+    "load-grunt-tasks": "^3.5.2"
   },
   "scripts": {
     "test": "mocha"
