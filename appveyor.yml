@@ -17,4 +17,4 @@ install:
 
 build_script:
 
-  - lice mit -o "Sasha Chernykh" --file LICENSE.md
+  - lice
