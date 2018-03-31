@@ -1,16 +1,20 @@
+init:
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - set PYTHONIOENCODING=utf-8
+
 environment:
 
   matrix:
 
-    - GRUNT_COMMAND:
-    - GRUNT_COMMAND: publish
+    - PYTHON: "C:\\Python36-x64"
+      PYTHON_VERSION: "3.6.4"
+      PYTHON_ARCH: "64"
 
 install:
 
-  - choco install nodejs -y
-  - npm install -g grunt-cli
-  - npm install
+  - python -m pip install --upgrade pip
+  - pip install lice
 
 build_script:
 
-  - grunt %GRUNT_COMMAND%
+  - lice mit -o "Sasha Chernykh" --file LICENSE.md
