@@ -1,15 +1,10 @@
-language: node_js
+language: python
 
-node_js:
-  - "node"
-
-env:
-  - GRUNT_COMMAND=
-  - GRUNT_COMMAND=publish
+python: 3.6
 
 install:
-  - npm install -g grunt-cli
-  - npm install
+  - pip install --upgrade pip
+  - pip install lice
 
 script:
-  - grunt $GRUNT_COMMAND
+  - lice mit -o "Sasha Chernykh" --file LICENSE.md
