@@ -17,4 +17,4 @@ install:
 
 build_script:
 
-  - chcp 65001 && lice mit -o "Sasha Chernykh" --file LICENSE.md
+  - set PYTHONIOENCODING=utf-8 && lice mit -o "Sasha Chernykh" --file LICENSE.md
