@@ -17,4 +17,4 @@ install:
 
 build_script:
 
-  - set PYTHONIOENCODING=utf-8 && lice mit -o "Sasha Chernykh" --file LICENSE.md
+  - lice mit -o "Sasha Chernykh" --file LICENSE.md
