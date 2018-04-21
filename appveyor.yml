@@ -18,7 +18,6 @@ environment:
       PYTHON_VERSION: "3.6.4"
       PYTHON_ARCH: "64"
       GRUNT_COMMAND: publish
-    - RUBY_VERSION: 2501-x64
 
 install:
 
