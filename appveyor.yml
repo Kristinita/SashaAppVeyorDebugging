@@ -1,20 +1,31 @@
 init:
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-  - set PYTHONIOENCODING=utf-8
+  - set PATH=C:\Ruby25-x64\bin;%PATH%
 
 environment:
 
   matrix:
 
+    # Variables:
+    # https://help.appveyor.com/discussions/problems/4629-how-to-use-appveyor-environment-variable
+    # https://help.appveyor.com/discussions/questions/15163-multiuple-build-matrix-dimensions-from-environment-variables
     - PYTHON: "C:\\Python36-x64"
       PYTHON_VERSION: "3.6.4"
       PYTHON_ARCH: "64"
+      # “grunt default” = “grunt”;
+      # AppVeyor support blank value.
+      GRUNT_COMMAND:
+    - PYTHON: "C:\\Python36-x64"
+      PYTHON_VERSION: "3.6.4"
+      PYTHON_ARCH: "64"
+      GRUNT_COMMAND: publish
+    - RUBY_VERSION: 2501-x64
 
 install:
 
-  - python -m pip install --upgrade pip
-  - pip install lice
+  - gem install travis
 
 build_script:
 
-  - lice
+  - ruby --version
+  - gem --version
+  - travis lint -x
