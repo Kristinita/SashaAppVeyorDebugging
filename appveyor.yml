@@ -8,7 +8,7 @@ build_script:
 
 - mkdir c:\gopath\src\github.com\mattn
 - cd c:\gopath\src\github.com\mattn
-- git clone https://github.com/mattn/asciinema
+- git clone -b windows https://github.com/mattn/asciinema
 - cd asciinema
 - git checkout windows
 - go build
