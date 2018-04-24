@@ -1,23 +1,8 @@
 init:
-  - set PATH=C:\Ruby25-x64\bin;%PATH%
+- set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
 
 environment:
-
-  matrix:
-
-    # Variables:
-    # https://help.appveyor.com/discussions/problems/4629-how-to-use-appveyor-environment-variable
-    # https://help.appveyor.com/discussions/questions/15163-multiuple-build-matrix-dimensions-from-environment-variables
-    - PYTHON: "C:\\Python36-x64"
-      PYTHON_VERSION: "3.6.4"
-      PYTHON_ARCH: "64"
-      # “grunt default” = “grunt”;
-      # AppVeyor support blank value.
-      GRUNT_COMMAND:
-    - PYTHON: "C:\\Python36-x64"
-      PYTHON_VERSION: "3.6.4"
-      PYTHON_ARCH: "64"
-      GRUNT_COMMAND: publish
+  GOPATH: c:\gopath
 
 install:
 
@@ -25,6 +10,9 @@ install:
 
 build_script:
 
-  - ruby --version
-  - gem --version
-  - travis lint -x
+- mkdir c:\gopath\src\github.com\mattn
+- cd c:\gopath\src\github.com\mattn
+- git clone https://github.com/mattn/asciinema
+- cd asciinema
+- git checkout windows
+- go build
