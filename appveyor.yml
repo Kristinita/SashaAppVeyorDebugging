@@ -11,4 +11,5 @@ build_script:
 - git clone https://github.com/mattn/asciinema
 - cd asciinema
 - git checkout windows
+- go get -d
 - go build
