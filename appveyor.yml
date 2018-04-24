@@ -4,10 +4,6 @@ init:
 environment:
   GOPATH: c:\gopath
 
-install:
-
-  - gem install travis
-
 build_script:
 
 - mkdir c:\gopath\src\github.com\mattn
