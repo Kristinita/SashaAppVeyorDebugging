@@ -1,15 +1,8 @@
-init:
-- set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+install:
 
-environment:
-  GOPATH: c:\gopath
+- ps: iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+- scoop install shellcheck
 
 build_script:
 
-- mkdir c:\gopath\src\github.com\mattn
-- cd c:\gopath\src\github.com\mattn
-- git clone https://github.com/mattn/asciinema
-- cd asciinema
-- git checkout windows
-- go get -d
-- go build
+- shellcheck --version
