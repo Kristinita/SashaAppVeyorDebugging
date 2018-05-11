@@ -6,8 +6,8 @@ environment:
 
 build_script:
 
-- mkdir c:\gopath\src\github.com\mattn
-- cd c:\gopath\src\github.com\mattn
+- mkdir c:\gopath\src\github.com\asciinema
+- cd c:\gopath\src\github.com\asciinema
 - git clone https://github.com/mattn/asciinema
 - cd asciinema
 - git checkout windows
