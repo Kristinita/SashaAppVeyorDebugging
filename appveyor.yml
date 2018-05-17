@@ -1,18 +1,18 @@
-init:
-- SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
-- SET PYTHONIOENCODING=utf-8
-
 environment:
   matrix:
   - PYTHON: C:\Python36-x64
     PYTHON_VERSION: 3.6.5
     PYTHON_ARCH: 64
 
+init:
+- SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
+- SET PYTHONIOENCODING=utf-8
+
 platform: x64
 
 install:
-- python -m pip install --upgrade pip
 - pip install bashate
 
 build_script:
+- where bashate
 - bashate -i E002,E003,E006,E010,E011 shellcheck.sh
