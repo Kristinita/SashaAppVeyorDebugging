@@ -1,15 +1,18 @@
 init:
-- set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+- SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
+- SET PYTHONIOENCODING=utf-8
 
 environment:
-  GOPATH: c:\gopath
+  matrix:
+  - PYTHON: C:\Python36-x64
+    PYTHON_VERSION: 3.6.5
+    PYTHON_ARCH: 64
+
+platform: x64
+
+install:
+- python -m pip install --upgrade pip
+- pip install bashate
 
 build_script:
-
-- mkdir c:\gopath\src\github.com\asciinema
-- cd c:\gopath\src\github.com\asciinema
-- git clone https://github.com/mattn/asciinema
-- cd asciinema
-- git checkout windows
-- go get -d
-- go build
+- bashate -i E002,E003,E006,E010,E011 shellcheck.sh
