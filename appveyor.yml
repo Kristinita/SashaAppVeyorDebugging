@@ -1,4 +1,5 @@
 init:
+- setx PIPENV_VENV_IN_PROJECT 1
 - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
 - SET PYTHONIOENCODING=utf-8
 
@@ -11,8 +12,8 @@ environment:
 platform: x64
 
 install:
-- pip install bashate
+- pip install pipenv
+- pipenv install bashate --dev
 
 build_script:
-- where bashate
 - bashate -i E002,E003,E006,E010,E011 shellcheck.sh
