@@ -1,3 +1,5 @@
+clone_depth: 1
+
 configuration:
 - Debug
 - Release
@@ -7,12 +9,9 @@ environment:
 
 for:
 -
-  matrix:
-    only:
-    - configuration: Release
-      GRUNT_BUILD_SCRIPT: ReleaseKira Goddess
-
-platform: x64
+  configuration: Release
+  environment:
+    GRUNT_BUILD_SCRIPT: ReleaseKira Goddess
 
 build_script:
 - echo %GRUNT_BUILD_SCRIPT%
