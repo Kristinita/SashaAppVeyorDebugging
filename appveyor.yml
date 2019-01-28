@@ -1,19 +1,15 @@
-init:
-- setx PIPENV_VENV_IN_PROJECT 1
-- SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
-- SET PYTHONIOENCODING=utf-8
+configuration:
+- Debug
+- Release
 
-environment:
+for:
   matrix:
-  - PYTHON: C:\Python36-x64
-    PYTHON_VERSION: 3.6.4
-    PYTHON_ARCH: 64
+  	GRUNT_BUILD_SCRIPT: Debug Goddess
+  	only:
+  	  - configuration: Release
+  	    GRUNT_BUILD_SCRIPT: Release Goddess
 
 platform: x64
 
-install:
-- pip install pipenv
-- pipenv install bashate --dev
-
 build_script:
-- bashate -i E002,E003,E006,E010,E011 shellcheck.sh
+- echo %GRUNT_BUILD_SCRIPT%
