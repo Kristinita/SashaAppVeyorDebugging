@@ -1,19 +1,17 @@
+init:
+- SET PATH=%USERPROFILE%\.dotnet\tools;%PATH%
+
 clone_depth: 1
 
-configuration:
-- Debug
-- Release
-
 environment:
-  GRUNT_BUILD_SCRIPT: DebugSasha Goddess
+  APPVEYOR_API_KEY:
+    secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
+
+install:
+- dotnet tool install -g localappveyor --version 0.5.0-alpha.10
+
+before_build:
+- refreshenv
 
 build_script:
-- echo %GRUNT_BUILD_SCRIPT%
-
-for:
--
-  matrix:
-    only:
-      - configuration: Release
-  environment:
-    GRUNT_BUILD_SCRIPT: ReleaseKira Goddess
+- localappveyor lint --token %APPVEYOR_API_KEY%
