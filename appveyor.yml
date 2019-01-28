@@ -12,6 +12,8 @@ build_script:
 
 for:
 -
-  configuration: Release
+  matrix:
+    only:
+      - configuration: Release
   environment:
     GRUNT_BUILD_SCRIPT: ReleaseKira Goddess
