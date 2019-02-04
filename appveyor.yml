@@ -1,11 +1,12 @@
 clone_depth: 1
 
-environment:
-  APPVEYOR_API_KEY:
-    secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
-
-install:
-- dotnet tool install -g localappveyor --version 0.5.0-alpha.10
+init:
+- SETX PIPENV_IGNORE_VIRTUALENVS 1
+- SETX PIPENV_VENV_IN_PROJECT 1
+- SETX PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
+- SETX PYTHONIOENCODING utf-8
+- SETX PATH=C:\Ruby25-x64\bin;%PATH%
+- SETX DOTNET_CLI_TELEMETRY_OPTOUT 1
 
 build_script:
-- localappveyor lint --token %APPVEYOR_API_KEY%
+- echo "Kira Goddess!"
