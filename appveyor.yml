@@ -1,7 +1,7 @@
 clone_depth: 1
 
 init:
-- SETX PATH "%PATH%;%USERPROFILE%\.dotnet\tools"
+- SET PATH=%PATH%;C:\%USERPROFILE%\.dotnet\tools
 - refreshenv
 
 configuration:
