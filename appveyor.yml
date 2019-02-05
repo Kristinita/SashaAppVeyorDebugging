@@ -18,9 +18,10 @@ install:
 
 build_script:
 - echo %GRUNT_BUILD%
+- echo %PATH%
 
 test_script:
-- cd "%USERPROFILE%\.dotnet\tools" && dir /s /b /a
+- cd "%USERPROFILE%\.dotnet\tools" && dir
 - cd %APPVEYOR_BUILD_FOLDER%
 - echo %PATH%
 - LocalAppVeyor lint --token %APPVEYOR_API_KEY%
