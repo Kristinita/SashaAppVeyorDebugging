@@ -8,4 +8,4 @@ install:
 - dotnet tool install -g localappveyor --version 0.5.0-alpha.10
 
 build_script:
-- localappveyor lint --token %APPVEYOR_API_KEY%
+- LocalAppVeyor lint --token %APPVEYOR_API_KEY%
