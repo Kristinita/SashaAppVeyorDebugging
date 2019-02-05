@@ -60,6 +60,7 @@ build_script:
 - cd "%USERPROFILE%\.dotnet\tools" && tree /f
 
 test_script:
+- cd %APPVEYOR_BUILD_FOLDER%
 - LocalAppVeyor lint --token %APPVEYOR_API_KEY%
 
 for:
