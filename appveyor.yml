@@ -48,6 +48,7 @@ environment:
   PYTHON: C:\Python37-x64
   PYTHON_VERSION: 3.7
   PYTHON_ARCH: 64
+  GRUNT_BUILD: Kira
   APPVEYOR_API_KEY:
     secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
 
@@ -55,7 +56,7 @@ install:
 - dotnet tool install -g localappveyor --version 0.5.0-alpha.10
 
 build_script:
-- echo %PATH%
+- echo %GRUNT_BUILD%
 - cd "%USERPROFILE%\.dotnet\tools" && tree /f
 
 test_script:
@@ -67,5 +68,4 @@ for:
     only:
     - configuration: Release
   environment:
-    GRUNT_BUILD: publish
-    GRUNT_TEST: validate remote
+    GRUNT_BUILD: Goddess
