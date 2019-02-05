@@ -37,6 +37,10 @@ init:
 # https://ss64.com/nt/call.html
 - refreshenv
 
+configuration:
+- Debug
+- Release
+
 environment:
   APPVEYOR_API_KEY:
     secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
