@@ -24,12 +24,11 @@ install:
 
 build_script:
 - echo %GRUNT_BUILD%
-- cd "%USERPROFILE%\.dotnet\tools" && tree /f
 
 test_script:
+- cd "%USERPROFILE%\.dotnet\tools" && dir /s /b /a
 - cd %APPVEYOR_BUILD_FOLDER%
 - echo %PATH%
-- dir /s /b /a
 - LocalAppVeyor lint --token %APPVEYOR_API_KEY%
 
 for:
