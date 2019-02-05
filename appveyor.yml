@@ -42,6 +42,12 @@ configuration:
 - Release
 
 environment:
+  # Variables:
+  # https://help.appveyor.com/discussions/problems/4629-how-to-use-appveyor-environment-variable
+  # https://help.appveyor.com/discussions/questions/15163-multiuple-build-matrix-dimensions-from-environment-variables
+  PYTHON: C:\Python37-x64
+  PYTHON_VERSION: 3.7
+  PYTHON_ARCH: 64
   APPVEYOR_API_KEY:
     secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
 
@@ -54,3 +60,12 @@ build_script:
 
 test_script:
 - LocalAppVeyor lint --token %APPVEYOR_API_KEY%
+
+for:
+-
+  matrix:
+    only:
+    - configuration: Release
+  environment:
+    GRUNT_BUILD: publish
+    GRUNT_TEST: validate remote
