@@ -4,15 +4,15 @@ init:
 - SET PATH=%PATH%;%PYTHON%;%PYTHON%\Scripts
 - refreshenv
 
-configuration:
-- Debug
-- Release
-
 environment:
   PYTHON: C:\Python37-x64
   PYTHON_VERSION: 3.7
   PYTHON_ARCH: 64
   KIRA_VARIABLE: Queen
+
+configuration:
+- Debug
+- Release
 
 build_script:
 - echo %KIRA_VARIABLE%
