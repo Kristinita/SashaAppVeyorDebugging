@@ -17,13 +17,13 @@ init:
 # 1. quotes
 # 2. escaping slashes
 - "SET PATH=C:\\Python37-x64\\Scripts;%PATH%"
+- refreshenv
 
 configuration:
 - Debug
 - Release
 
 install:
-- refreshenv
 - '%APPVEYOR_BUILD_FOLDER%/appveyor-install.bat'
 
 build_script:
