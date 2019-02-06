@@ -7,44 +7,14 @@ environment:
   PYTHON_VERSION: 3.7
   PYTHON_ARCH: 64
   PYTHON_SCRIPTS: "C:\\Python37-x64\\Scripts"
-  KIRA_VARIABLE: Queen
-
-init:
-# [INFO] Add Python 3 to PATH:
-# https://github.com/ogrisel/python-appveyor-demo/blob/master/appveyor.yml
-# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/22172347/job/fumddcruu3rkvt2j#L45
-# [WARNING] Required:
-# 1. quotes
-# 2. escaping slashes
-
-configuration:
-- Debug
-- Release
 
 install:
 - set PATH=%PATH%;C:\Python37-x64\Scripts\
 - refreshenv
+- "%PYTHON%\\python -m pip install --upgrade pip"
+- "%PYTHON_SCRIPTS%\\pip install erichek"
 - '%APPVEYOR_BUILD_FOLDER%/appveyor-install.bat'
 
 build_script:
-- echo %KIRA_VARIABLE%
-# [NOTE] pip3, not pip2 use:
-# https://ci.appveyor.com/project/Kristinita/kristinitapelican/builds/22169055/job/xp4usfdk0ume43vh?fullLog=true#L78
 - "%PYTHON_SCRIPTS%\\pip --version"
-# [WARNING] Python 2 by default at February 2019; need specific actions:
-# https://packaging.python.org/guides/supporting-windows-using-appveyor/
-# https://stackoverflow.com/a/51984189/5951529
-# [NOTE] Required:
-# 1. quotes
-# 2. escaping slashes
-# Otherwise will not work
 - "%PYTHON%\\python --version"
-
-
-for:
--
-  matrix:
-    only:
-    - configuration: Release
-  environment:
-    KIRA_VARIABLE: Goddess
