@@ -9,7 +9,7 @@ environment:
   PYTHON_SCRIPTS: "C:\\Python37-x64\\Scripts"
 
 install:
-- set PATH=%PATH%;C:\Python37-x64\Scripts\
+- set PATH=C:\Python37-x64\Scripts;%PATH%
 - refreshenv
 - "%PYTHON%\\python -m pip install --upgrade pip"
 - "%PYTHON_SCRIPTS%\\pip install erichek"
