@@ -4,6 +4,8 @@ platform: x64
 
 init:
 - SET "PATH=%PATH%;%PYTHON%;%PYTHON%\\Scripts"
+- SET PATH=%PATH:C:\Python27;=%
+- SET PATH=%PATH:C:\Python27\Scripts;=%
 - refreshenv
 
 configuration:
