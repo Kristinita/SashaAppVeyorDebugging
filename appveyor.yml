@@ -28,7 +28,8 @@ build_script:
 # [WARNING] Python 2 by default at February 2019; need specific actions:
 # https://packaging.python.org/guides/supporting-windows-using-appveyor/
 # https://stackoverflow.com/a/51984189/5951529
-- %PYTHON%\python --version
+# [NOTE] appveyor.yml not valid without quotes and escaping slash
+- "%PYTHON\\python --version"
 
 for:
 -
