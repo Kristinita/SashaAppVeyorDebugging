@@ -3,7 +3,14 @@ clone_depth: 1
 platform: x64
 
 init:
-- SET PATH=%PATH%;%PYTHON%;%PYTHON%\Scripts
+
+# [INFO] Add Python 3 to PATH:
+# https://github.com/ogrisel/python-appveyor-demo/blob/master/appveyor.yml
+# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/22172347/job/fumddcruu3rkvt2j#L45
+# [WARNING] Required:
+# 1. quotes
+# 2. escaping slashes
+-  "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 - refreshenv
 
 configuration:
