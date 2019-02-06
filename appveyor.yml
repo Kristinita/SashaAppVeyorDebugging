@@ -3,7 +3,7 @@ clone_depth: 1
 platform: x64
 
 init:
-- SET "PATH=%PATH%;%PYTHON%;%PYTHON%\\Scripts"
+- SET PATH=%PATH%;%PYTHON%;%PYTHON%\Scripts
 - SET PATH=%PATH:C:\Python27;=%
 - SET PATH=%PATH:C:\Python27\Scripts;=%
 - refreshenv
@@ -16,14 +16,19 @@ environment:
   PYTHON: C:\Python37-x64
   PYTHON_VERSION: 3.7
   PYTHON_ARCH: 64
-  PIP: "C:\\Python37-x64\\Scripts\\pip"
   KIRA_VARIABLE: Queen
 
 build_script:
 - echo %KIRA_VARIABLE%
 - echo %PATH%
 - echo %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%
-- python --version
+# [NOTE] pip3, not pip2 use:
+# https://ci.appveyor.com/project/Kristinita/kristinitapelican/builds/22169055/job/xp4usfdk0ume43vh?fullLog=true#L78
+- pip3 --version
+# [WARNING] Python 2 by default at February 2019; need specific actions:
+# https://packaging.python.org/guides/supporting-windows-using-appveyor/
+# https://stackoverflow.com/a/51984189/5951529
+- %PYTHON%\python --version
 
 for:
 -
