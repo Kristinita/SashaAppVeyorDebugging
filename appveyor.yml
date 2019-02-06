@@ -1,7 +1,7 @@
 clone_depth: 1
 
 init:
-- SET PATH=%PATH%;C:\%USERPROFILE%\.dotnet\tools
+- SET PATH=%PATH%;%PYTHON%;%PYTHON%\Scripts
 - refreshenv
 
 configuration:
@@ -9,22 +9,13 @@ configuration:
 - Release
 
 environment:
-  GRUNT_BUILD: Kira
-  APPVEYOR_API_KEY:
-    secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
-
-install:
-- dotnet tool install -g localappveyor --version 0.5.0-alpha.10
+  PYTHON_VERSION: 3.7
+  PYTHON_ARCH: 64
+  KIRA_VARIABLE: Queen
 
 build_script:
-- echo %GRUNT_BUILD%
-- echo %PATH%
-
-test_script:
-- cd "%USERPROFILE%\.dotnet\tools" && dir
-- cd %APPVEYOR_BUILD_FOLDER%
-- echo %PATH%
-- LocalAppVeyor lint --token %APPVEYOR_API_KEY%
+- echo %KIRA_VARIABLE%
+- python --version
 
 for:
 -
@@ -32,4 +23,4 @@ for:
     only:
     - configuration: Release
   environment:
-    GRUNT_BUILD: Goddess
+    KIRA_VARIABLE: Goddess
