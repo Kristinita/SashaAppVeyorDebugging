@@ -9,6 +9,7 @@ configuration:
 - Release
 
 environment:
+  PYTHON: C:\Python37-x64
   PYTHON_VERSION: 3.7
   PYTHON_ARCH: 64
   KIRA_VARIABLE: Queen
