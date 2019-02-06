@@ -3,7 +3,7 @@ clone_depth: 1
 platform: x64
 
 init:
-- SET PATH=%PATH%;%PYTHON%;%PYTHON%\Scripts
+- SET "PATH=%PATH%;%PYTHON%;%PYTHON%\\Scripts"
 - refreshenv
 
 configuration:
@@ -19,6 +19,7 @@ environment:
 
 build_script:
 - echo %KIRA_VARIABLE%
+- echo %PATH%
 - echo %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%
 - python --version
 
