@@ -4,8 +4,6 @@ platform: x64
 
 init:
 - SET PATH=%PATH%;%PYTHON%;%PYTHON%\Scripts
-- SET PATH=%PATH:C:\Python27;=%
-- SET PATH=%PATH:C:\Python27\Scripts;=%
 - refreshenv
 
 configuration:
@@ -22,15 +20,14 @@ environment:
 build_script:
 - echo %KIRA_VARIABLE%
 - echo %PATH%
-- echo %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%
 # [NOTE] pip3, not pip2 use:
 # https://ci.appveyor.com/project/Kristinita/kristinitapelican/builds/22169055/job/xp4usfdk0ume43vh?fullLog=true#L78
-- "%PIP\\pip --version"
+- "%PIP\\pip.exe --version"
 # [WARNING] Python 2 by default at February 2019; need specific actions:
 # https://packaging.python.org/guides/supporting-windows-using-appveyor/
 # https://stackoverflow.com/a/51984189/5951529
 # [NOTE] appveyor.yml not valid without quotes and escaping slash
-- "%PYTHON\\python --version"
+- "%PYTHON\\python.exe --version"
 
 
 for:
