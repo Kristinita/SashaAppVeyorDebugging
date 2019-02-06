@@ -2,27 +2,27 @@ clone_depth: 1
 
 platform: x64
 
-init:
-
-# [INFO] Add Python 3 to PATH:
-# https://github.com/ogrisel/python-appveyor-demo/blob/master/appveyor.yml
-# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/22172347/job/fumddcruu3rkvt2j#L45
-# [WARNING] Required:
-# 1. quotes
-# 2. escaping slashes
--  "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-- refreshenv
-
-configuration:
-- Debug
-- Release
-
 environment:
   PYTHON: C:\Python37-x64
   PYTHON_VERSION: 3.7
   PYTHON_ARCH: 64
   PIP: C:\Python37-x64\Scripts
   KIRA_VARIABLE: Queen
+
+init:
+# [INFO] Add Python 3 to PATH:
+# https://github.com/ogrisel/python-appveyor-demo/blob/master/appveyor.yml
+# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/22172347/job/fumddcruu3rkvt2j#L45
+# [WARNING] Required:
+# 1. quotes
+# 2. escaping slashes
+- "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+- refreshenv
+
+configuration:
+- Debug
+- Release
+
 
 install:
 - '%APPVEYOR_BUILD_FOLDER%/appveyor-install.bat'
