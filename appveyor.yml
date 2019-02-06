@@ -16,7 +16,7 @@ init:
 # [WARNING] Required:
 # 1. quotes
 # 2. escaping slashes
-- "SET PATH=%PYTHON_SCRIPTS%;%PATH%"
+- "SET PATH=C:\\Python37-x64\\Scripts;%PATH%"
 
 configuration:
 - Debug
