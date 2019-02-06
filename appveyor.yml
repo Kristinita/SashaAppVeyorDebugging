@@ -9,8 +9,12 @@ environment:
   PYTHON_SCRIPTS: "C:\\Python37-x64\\Scripts"
 
 install:
+# As in Ruby example:
+# https://www.appveyor.com/docs/lang/ruby/#installation
 - set PATH=C:\Python37-x64\Scripts;%PATH%
-- refreshenv
+# [INFO] python-appveyor-demo:
+# https://github.com/ogrisel/python-appveyor-demo/blob/master/appveyor.yml
+- "SET PATH=C:\\Python37-x64\\%PYTHON%\\Scripts;%PATH%"
 - "%PYTHON%\\python -m pip install --upgrade pip"
 - "%PYTHON_SCRIPTS%\\pip install erichek"
 
