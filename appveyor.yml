@@ -17,6 +17,9 @@ environment:
   PIP: C:\Python37-x64\Scripts
   KIRA_VARIABLE: Queen
 
+install:
+- '%APPVEYOR_BUILD_FOLDER%/appveyor-install.bat'
+
 build_script:
 - echo %KIRA_VARIABLE%
 # [NOTE] pip3, not pip2 use:
@@ -28,7 +31,6 @@ build_script:
 # [NOTE] Required:
 # 1. quotes
 # 2. escaping slashes
-# 3. .exe
 # Otherwise will not work
 - "%PYTHON%\\python --version"
 
