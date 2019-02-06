@@ -14,19 +14,22 @@ environment:
   PYTHON: C:\Python37-x64
   PYTHON_VERSION: 3.7
   PYTHON_ARCH: 64
-  PIP: C:\Python37-x64\Scripts\pip
+  PIP: C:\Python37-x64\Scripts
   KIRA_VARIABLE: Queen
 
 build_script:
 - echo %KIRA_VARIABLE%
-- echo %PATH%
 # [NOTE] pip3, not pip2 use:
 # https://ci.appveyor.com/project/Kristinita/kristinitapelican/builds/22169055/job/xp4usfdk0ume43vh?fullLog=true#L78
 - "%PIP\\pip.exe --version"
 # [WARNING] Python 2 by default at February 2019; need specific actions:
 # https://packaging.python.org/guides/supporting-windows-using-appveyor/
 # https://stackoverflow.com/a/51984189/5951529
-# [NOTE] appveyor.yml not valid without quotes and escaping slash
+# [NOTE] Required:
+# 1. quotes
+# 2. escaping slashes
+# 3. .exe
+# Otherwise will not work
 - "%PYTHON\\python.exe --version"
 
 
