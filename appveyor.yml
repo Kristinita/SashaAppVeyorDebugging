@@ -16,7 +16,7 @@ init:
 # [WARNING] Required:
 # 1. quotes
 # 2. escaping slashes
-- "SET PATH=%PYTHON%;%PYTHON_SCRIPTS%;%PATH%"
+- "SET PATH=%PYTHON_SCRIPTS%;%PATH%"
 - refreshenv
 
 configuration:
