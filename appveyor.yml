@@ -15,11 +15,11 @@ install:
 # [INFO] python-appveyor-demo:
 # https://github.com/ogrisel/python-appveyor-demo/blob/master/appveyor.yml
 - "SET PATH=C:\\Python37-x64\\%PYTHON%\\Scripts;%PATH%"
-- refreshenv
+# https://github.com/appveyor/ci/issues/1755
 - "%PYTHON%\\python -m pip install --upgrade pip"
-- "%PYTHON_SCRIPTS%\\pip install erichek"
+- pip3 install erichek
 
 build_script:
-- "%PYTHON_SCRIPTS%\\pip --version"
-- "%PYTHON%\\python --version"
+- pip3 --version
+- python3 --version
 - erichek --help
