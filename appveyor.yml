@@ -11,6 +11,7 @@ init:
 # [INFO] python-appveyor-demo:
 # https://github.com/ogrisel/python-appveyor-demo/blob/master/appveyor.yml
 - SET PATH=%PATH%;%PYTHON%;%PYTHON%\Scripts
+- refreshenv
 
 install:
 # https://github.com/appveyor/ci/issues/1755
