@@ -10,7 +10,8 @@ environment:
   RUBY: C:\Ruby26-x64\bin
 
 install:
-- "%RUBY%\\gem install travis"
+- bundle install
+- gem install travis
 
 build_script:
 - echo "Kira Goddess!"
