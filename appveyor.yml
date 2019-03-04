@@ -2,8 +2,12 @@ clone_depth: 1
 
 platform: x64
 
+init:
+- SET PATH=%PATH%;%RUBY%
+
 environment:
   PYTHON: C:\Python37-x64
+  RUBY: C:\Ruby26-x64\bin
 
 install:
 - gem install travis
