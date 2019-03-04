@@ -5,20 +5,8 @@ platform: x64
 environment:
   PYTHON: C:\Python37-x64
 
-init:
-# As in Ruby example:
-# https://www.appveyor.com/docs/lang/ruby/#installation
-# [INFO] python-appveyor-demo:
-# https://github.com/ogrisel/python-appveyor-demo/blob/master/appveyor.yml
-- SET PATH=%PATH%;%PYTHON%;%PYTHON%\Scripts
-- refreshenv
-
 install:
-# https://github.com/appveyor/ci/issues/1755
-- "%PYTHON%\\python -m pip install --upgrade pip"
-- pip3 install erichek
+- gem install travis
 
 build_script:
-- pip3 --version
-- "%PYTHON%\\python --version"
-- erichek --help
+- echo "Kira Goddess!"
