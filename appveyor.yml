@@ -10,6 +10,7 @@ environment:
   RUBY: C:\Ruby26-x64\bin
 
 install:
+- gem install bundler
 - bundle install
 - gem install travis
 
