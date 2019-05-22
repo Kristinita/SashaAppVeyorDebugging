@@ -6,6 +6,9 @@ environment:
   PYTHON: C:\Python37-x64
   RUBY: C:\Ruby26-x64\bin
 
+init:
+- SETX GRUNT_PYLINT_SKIP_POSTINSTALL yes
+
 install:
 - choco install gtools -y
 - refreshenv
@@ -15,3 +18,4 @@ install:
 
 build_script:
 - echo %PATH%
+- echo %GRUNT_PYLINT_SKIP_POSTINSTALL%
