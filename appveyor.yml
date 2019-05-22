@@ -8,6 +8,7 @@ environment:
 
 install:
 - choco install gtools -y
+- refreshenv
 - pathed /APPEND %PYTHON% /USER
 - pathed /APPEND %RUBY% /USER
 - refreshenv
