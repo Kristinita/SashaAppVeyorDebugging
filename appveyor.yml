@@ -12,5 +12,6 @@ install:
 
 build_script:
 - where pathed
-- pathed /APPEND %PYTHON% %RUBY%
+- pathed /APPEND %PYTHON%
+- pathed /APPEND %RUBY%
 - echo %PATH%
