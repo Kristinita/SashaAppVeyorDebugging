@@ -8,7 +8,8 @@ environment:
 
 install:
 - choco install gtools -y
-- pathed /APPEND %PYTHON% %RUBY%
 
 build_script:
+- pathed /APPEND %PYTHON% %RUBY%
 - echo %PATH%
+- dir "C:\Program Files (x86)\p-nand-q.com\GTools" /b /s /A-D
