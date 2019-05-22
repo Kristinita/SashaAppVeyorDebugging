@@ -8,11 +8,9 @@ environment:
 
 install:
 - choco install gtools -y
-- refreshenv
-
-build_script:
-- where pathed
 - pathed /APPEND %PYTHON% /USER
 - pathed /APPEND %RUBY% /USER
 - refreshenv
+
+build_script:
 - echo %PATH%
