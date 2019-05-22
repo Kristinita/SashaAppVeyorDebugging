@@ -14,6 +14,7 @@ install:
 - refreshenv
 - pathed /APPEND %PYTHON% /USER
 - pathed /APPEND %RUBY% /USER
+- refreshenv
 
 build_script:
 - echo %PATH%
