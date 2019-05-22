@@ -14,4 +14,5 @@ build_script:
 - where pathed
 - pathed /APPEND %PYTHON% /USER
 - pathed /APPEND %RUBY% /USER
+- refreshenv
 - echo %PATH%
