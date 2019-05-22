@@ -10,6 +10,7 @@ install:
 - choco install gtools -y
 
 build_script:
-- pathed /APPEND %PYTHON% %RUBY%
-- echo %PATH%
 - dir "C:\Program Files (x86)\p-nand-q.com\GTools" /b /s /A-D
+- where pathed
+- echo %PATH%
+- pathed /APPEND %PYTHON% %RUBY%
