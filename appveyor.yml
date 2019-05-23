@@ -12,8 +12,7 @@ init:
 install:
 - choco install gtools -y
 - refreshenv
-- pathed /APPEND %PYTHON% /USER
-- pathed /APPEND %RUBY% /USER
+- pathed /APPEND %PYTHON% & pathed /APPEND %RUBY% & pathed /APPEND %PYTHON%\Scripts & pathed /APPEND %USERPROFILE%\.dotnet\tools
 - refreshenv
 
 build_script:
