@@ -12,9 +12,9 @@ init:
 install:
 - choco install gtools -y
 - refreshenv
-- pathed /APPEND %PYTHON%
-- pathed /APPEND %RUBY%
-- pathed /APPEND %PYTHON%\Scripts
+- pathed /APPEND %PYTHON% \USER
+- pathed /APPEND %RUBY% \USER
+- pathed /APPEND %PYTHON%\Scripts \USER
 - refreshenv
 
 build_script:
