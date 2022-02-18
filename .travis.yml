@@ -1,12 +1,6 @@
 language: python
 
-python: 3.6
-
-
-install:
-  - pip install pipenv
-  - pipenv install --dev
+python: 3.10
 
 script:
-  - pipenv --version
-  - pelican --version
+- echo "Kira Goddess!"
