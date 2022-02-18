@@ -1,5 +1,5 @@
 environment:
-  PYTHON: C:\Python39-x64
+  PYTHON: C:\Python310-x64
 
 platform: x64
 
@@ -17,7 +17,6 @@ init:
 install:
 - "choco install gtools -y & refreshenv & pathed /APPEND %PYTHON% /USER & pathed /APPEND %PYTHON%\\Scripts /USER"
 - refreshenv
-- pip install --upgrade pip
 - pip install pipenv
 - pipenv install --dev
 - pipenv run peru sync"
