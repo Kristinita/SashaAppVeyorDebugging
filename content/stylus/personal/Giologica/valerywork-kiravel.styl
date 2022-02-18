@@ -1,0 +1,51 @@
+SashaValeryworkKiravelColor1 = #e20026
+SashaValeryworkKiravelColor2 = #f64a82
+SashaValeryworkKiravelColor3 = #cce821
+
+.arrow
+	position relative
+	width 5rem
+	height .3125rem
+	background lightsteelblue
+	-webkit-transform rotate(0deg)
+	transform rotate(0deg)
+
+	&:after
+		position absolute
+		content ""
+		-webkit-transform rotate(45deg)
+		transform rotate(45deg)
+		// Leading zeros for negative numbers support
+		top - .625rem
+		right 0
+		width 1.25rem
+		height 1.25rem
+		background transparent
+		border-right .3125rem solid lightsteelblue
+		border-top .3125rem solid lightsteelblue
+		/* [INFO] Box model:
+		https://github.com/CSSLint/csslint/wiki/Beware-of-box-model-size
+		https://caniuse.com/#feat=css3-boxsizing
+		https://css-tricks.com/the-css-box-model/
+		https://simonwillison.net/2003/May/26/theBoxModel/
+		*/
+		box-sizing border-box
+
+.SashaBig
+	font-size 1.3rem
+	font-weight bold
+
+.SashaBox
+	background-color lavender
+
+.SashaBorderValerywork
+	border-color SashaValeryworkKiravelColor1
+	border .125rem
+
+.SashaBorderKiravel
+	border-color SashaValeryworkKiravelColor2
+	border .125rem
+
+.SashaBorderStrelena
+	border-color SashaValeryworkKiravelColor3
+	border .125rem

@@ -1,0 +1,111 @@
+##################
+## registerTask ##
+##################
+# Run chains of Grunt commands:
+
+# [LEARN][GRUNT] If “default”, you need run “grunt” in command prompt, not “grunt default”:
+# https://www.html5rocks.com/en/tutorials/tooling/supercharging-your-gruntfile/#toc-organizing
+
+# [INFO] Reviewing with relative paths
+default:
+- 'concurrent:tarb1'
+- 'concurrent:tarb2'
+- 'concurrent:tarb3'
+- 'concurrent:tarb4'
+- 'concurrent:tarb5'
+- 'concurrent:tarb6'
+- 'concurrent:tarb7'
+- 'concurrent:tarb8'
+- 'concurrent:tarb9'
+- 'concurrent:tarb10'
+
+# [INFO] Minimal set of tasks, that site works; for development
+minimal:
+- 'concurrent:tarb1'
+- 'string-replace'
+
+# [INFO] Make site screenshots
+screenshots:
+- 'concurrent:tarsc1'
+
+# [INFO] Before publishing with absolute paths,
+publish:
+- 'concurrent:taru1'
+- 'concurrent:taru2'
+- 'concurrent:taru3'
+- 'concurrent:tarp1'
+- 'concurrent:tarp2'
+- 'concurrent:tarp3'
+- 'concurrent:tarp4'
+- 'concurrent:tarp5'
+- 'concurrent:tarp6'
+- 'concurrent:tarp7'
+- 'concurrent:tarp8'
+- 'concurrent:tarp9'
+- 'concurrent:tarp10'
+- 'concurrent:tarp11'
+- 'concurrent:tarp12'
+- 'concurrent:tarp13'
+- 'concurrent:tarp14'
+
+# [INFO] Publish without updating
+onlypublish:
+- 'concurrent:tarp1'
+- 'concurrent:tarp2'
+- 'concurrent:tarp3'
+- 'concurrent:tarp4'
+- 'concurrent:tarp5'
+- 'concurrent:tarp6'
+- 'concurrent:tarp7'
+- 'concurrent:tarp8'
+- 'concurrent:tarp9'
+- 'concurrent:tarp10'
+- 'concurrent:tarp11'
+- 'concurrent:tarp12'
+- 'concurrent:tarp13'
+- 'concurrent:tarp14'
+
+# [INFO] Add, commit and push to GitHub
+git:
+- 'gta:add'
+- 'gta:commit'
+- 'gta:push'
+
+# [INFO] Update Node.js modules, Python packages and refactor Git
+update:
+- 'concurrent:taru1'
+- 'concurrent:taru2'
+- 'concurrent:taru3'
+# - 'concurrent:taru4'
+
+# [INFO] Sources and output validation
+validate:
+- 'concurrent:tars1'
+- 'concurrent:tarv1'
+- 'concurrent:tarv2'
+- 'concurrent:tarv3'
+
+# [INFO] Validate for development builds
+validatedev:
+- 'concurrent:tard1'
+- 'concurrent:tard2'
+
+# [INFO] Continuous integration, not local
+remote:
+- 'concurrent:tarr1'
+- 'concurrent:tarr2'
+
+# [INFO] Travis CI specific
+travis:
+- 'concurrent:tart1'
+- 'concurrent:tart2'
+
+# [INFO] Not in AppVeyor because of AppVeyor bugs
+notappveyor:
+- 'concurrent:tarna1'
+- 'concurrent:tarna2'
+
+# [INFO] For deployed site
+afterdeploy:
+- 'concurrent:tarad1'
+- 'concurrent:tarad2'
