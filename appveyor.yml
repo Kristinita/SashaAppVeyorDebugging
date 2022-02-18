@@ -114,6 +114,9 @@ environment:
   API_KEY_PAGESPEED_INSIGHTS_V5:
     secure: 0xjbRl5LLYt8QPnzOLNdYFmFMT6j97EnU8Jj97BmRRW9FLebRfeUMrqOulXa3gDi
 
+configuration:
+- Debug
+- Release
 
 # [LEARN][APPVEYOR] Build configuration:
 # https://www.appveyor.com/docs/build-configuration/#build-pipeline
@@ -148,5 +151,30 @@ install:
 # https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/24763463
 - refreshenv
 
+# build_script:
+# - pipenv run pelican content -s pelicanconf.py --fatal warnings --debug
+
 build_script:
-- pipenv run pelican --version
+- grunt %GRUNT_BUILD%
+
+
+test_script:
+- grunt %GRUNT_TEST%
+
+
+# [LEARN][APPVEYOR] Simple working configuration:
+# https://github.com/Kristinita/SashaAppVeyorDebugging/blob/7ac8c23540c737f403ae280ce6502734833bb85f/appveyor.yml
+for:
+-
+  matrix:
+    only:
+    - configuration: Release
+  environment:
+    GRUNT_BUILD: publish
+    # [DONE][FIXED] https://github.com/GoogleChromeLabs/psi/issues/118
+    # https://github.com/GoogleChromeLabs/psi/pull/120
+    # [NOTE] Travis CI build run parallel and end before AppVeyor,
+    # so “afterdeploy” will run after site deployment.
+    # [BUG][FIXME] “Cannot read property 'metrics' of undefined” bug:
+    # https://github.com/GoogleChromeLabs/psi/issues/118
+    GRUNT_TEST: validate remote afterdeploy
