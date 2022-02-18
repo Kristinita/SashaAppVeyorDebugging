@@ -16,6 +16,7 @@ init:
 
 install:
 - "choco install gtools -y & refreshenv & pathed /APPEND %PYTHON% /USER & pathed /APPEND %PYTHON%\\Scripts /USER"
+- refreshenv
 - "%PYTHON%\\python -m pip install --upgrade pip & %PYTHON%\\python -m pip install pipenv & pipenv install --dev & pipenv run peru sync"
 
 build_script:
