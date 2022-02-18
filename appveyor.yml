@@ -156,7 +156,7 @@ install:
 
 
 build_script:
-- grunt %GRUNT_BUILD%
+- pipenv run pelican content -s pelicanconf.py --fatal warnings --debug
 
 
 test_script:
