@@ -5,7 +5,7 @@ platform: x64
 
 clone_depth: 1
 
-image: Visual Studio 2022
+image: Visual Studio 2019
 
 init:
 - SETX PIPENV_IGNORE_VIRTUALENVS 1
