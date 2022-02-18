@@ -15,9 +15,9 @@ init:
 - SETX PYTHONIOENCODING utf-8
 
 install:
-- "choco install gtools -y & refreshenv & pathed /APPEND %PYTHON% /USER & pathed /APPEND %PYTHON%\\Scripts /USER"
+- "%APPVEYOR_BUILD_FOLDER%/appveyor-pathed.bat"
 - refreshenv
-- "pip install pipenv & pipenv install --dev & pipenv run peru sync"
+- "%APPVEYOR_BUILD_FOLDER%/appveyor-install.bat"
 - refreshenv
 
 build_script:

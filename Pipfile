@@ -18,6 +18,4 @@ pillow = "*"
 "ruamel.yaml" = "*"
 peru = "*"
 pylint = "*"
-csvlexer = {git = "https://github.com/Kristinita/PygmentsCSVLexer.git", editable = true}
-mdx_downheader = {git = "https://github.com/Kristinita/mdx_downheader.git", editable = true, ref = "KiraPatch"}
 pelican = "*"
