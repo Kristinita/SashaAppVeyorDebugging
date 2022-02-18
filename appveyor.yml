@@ -1,23 +1,157 @@
-environment:
-  PYTHON: C:\Python310-x64
+############
+# AppVeyor #
+############
+# [PURPOSE] Continuous integration for Windows:
+# https://www.appveyor.com/docs/
+# [INFO] Configuration:
+# https://www.appveyor.com/docs/appveyor-yml/
 
+
+# [NOTE] I don’t want support 32-bit Windows:
+# https://www.appveyor.com/docs/appveyor-yml/
 platform: x64
 
-clone_depth: 1
 
+# [REQUIRED] Visual Studio 2019 for correct LocalAppVeyor run:
+# https://ci.appveyor.com/project/Kristinita/kristinitapelican/build/job/5c8lytcray3s6u2k?fullLog=true#L139
+# https://www.appveyor.com/docs/custom-build-images/#building-shared-image-in-a-dedicated-project
+# https://www.appveyor.com/docs/windows-images-software/#net-framework
+# [INFO] It the latest AppVeyor image for October 2020
 image: Visual Studio 2019
 
+
+# [INFO] Don’t download all repository history, that save a time:
+# https://www.appveyor.com/docs/how-to/repository-shallow-clone/#setting-depth-of-git-clone-command
+clone_depth: 1
+
+
 init:
+# [NOTE] Don’t use SETX for adding value of “PATH” variable!
+# You can loss PATH data, if PATH contains more than 1024 symbols:
+# https://superuser.com/a/939256/572069
+# [LEARN] SETX PATH:
+# https://stackoverflow.com/a/26947177/5951529
+# https://superuser.com/a/939256/572069
+# [LEARN] SET PATH:
+# https://stackoverflow.com/a/9546345/5951529
+# [BUG] SETX doesn’t work with “configuration” step, compare:
+# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/22144071
+# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/22144311
+
+# [LINK] “.travis.yml”:
 - SETX PIPENV_IGNORE_VIRTUALENVS 1
 - SETX PIPENV_VENV_IN_PROJECT 1
+# - SETX PIPENV_SKIP_LOCK 1
+
 # [NOTE] Needs AppVeyor console set, see:
 # https://stackoverflow.com/a/48093971/5951529
 - SETX PYTHONIOENCODING utf-8
 
+# [LINK] “.travs.yml”
+- SETX DOTNET_CLI_TELEMETRY_OPTOUT 1
+
+# [LINK] “.travs.yml”
+- SETX GRUNT_PYLINT_SKIP_POSTINSTALL yes
+
+# [NOTE] Disable preventing Node.js warnings:
+# [LINK] “.travis.yml”
+- SETX NODE_NO_WARNINGS 1
+
+
+# [NOTE] Use “CALL Refreshenv.cmd” for local installation:
+# https://github.com/chocolatey/choco/issues/1461#issuecomment-348136706
+# https://ss64.com/nt/call.html
+
+# [NOTE] Don’t use refreshenv in AppVeyor, if you use “SET” instead of “pathed”!
+# You loss your environment variables:
+# https://github.com/appveyor/ci/issues/1755
+# Compare (difference — only refreshenv step):
+# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/22187235
+# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/22187272
+# - refreshenv
+
+
+# [LEARN][APPVEYOR] “configuration” step:
+# https://www.appveyor.com/blog/2018/04/25/specialized-build-matrix-configuration-in-appveyor/
+# “Debug” configuration is default
+# configuration:
+# - Debug
+# - Release
+
+
+environment:
+  # [LEARN][APPVEYOR] Variables:
+  # https://help.appveyor.com/discussions/problems/4629-how-to-use-appveyor-environment-variable
+  # https://help.appveyor.com/discussions/questions/15163-multiuple-build-matrix-dimensions-from-environment-variables
+  # [INFO] I use the latest available Python version:
+  # https://www.appveyor.com/docs/windows-images-software/#python
+  PYTHON: C:\Python310-x64
+
+  # [INFO] “grunt default” = “grunt”;
+  # AppVeyor support blank value.
+
+  # [INFO] Spaces before “&&” doesn't need, compare:
+  # https://ci.appveyor.com/project/Kristinita/sashatravis/build/job/5oqxucp76bpsr51o
+  # https://ci.appveyor.com/project/Kristinita/sashatravis/build/1.0.38/job/s52ko615e3fpxr9b
+  GRUNT_BUILD:
+
+  # [NOTE] For AppVeyor I use “clean-console”, not “validatedev”.
+  # “checkPages” is a task for Travis CI solely;
+  # for AppVeyor I get bugs, possibly, because HTML not fixed correctly:
+  # https://ci.appveyor.com/project/Kristinita/kristinitapelican/build/job/o5cwx0ug2htufar8#L2488
+  GRUNT_TEST: http-server clean-console&& grunt validate remote
+
+  # [INFO] API key required for LocalAppVeyor:
+  # https://www.appveyor.com/docs/api/
+  # https://ci.appveyor.com/api-keys
+  API_KEY_APPVEYOR:
+    # [LEARN][APPVEYOR] Secure variables:
+    # Encrypt in remote AppVeyor site, not locally:
+    # https://www.appveyor.com/docs/build-configuration/#secure-variables
+    secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
+
+  # [INFO] API key for PageSpeed Insights:
+  API_KEY_PAGESPEED_INSIGHTS_V5:
+    secure: 0xjbRl5LLYt8QPnzOLNdYFmFMT6j97EnU8Jj97BmRRW9FLebRfeUMrqOulXa3gDi
+
+
+# [LEARN][APPVEYOR] Build configuration:
+# https://www.appveyor.com/docs/build-configuration/#build-pipeline
 install:
-- "%APPVEYOR_BUILD_FOLDER%/appveyor-pathed.bat"
+
+# [REQUIRED] So that script run for “master” branch, not for “HEAD”;
+# Needs, that “grunt-checkbranch” works correct:
+# https://stackoverflow.com/a/18866140/5951529
+# [NOTE] It needs in “install” section, because in “init” section actions before cloning.
+- git checkout master
+
+# [LEARN][APPVEYOR] Console (cmd.exe) is default terminal in AppVeyor.
+# If needs PowerShell, “ps:” required:
+# https://www.appveyor.com/docs/appveyor-yml/
+# [NOTE] For local Scoop installation must required:
+# “Set-ExecutionPolicy RemoteSigned -scope CurrentUser”
+# http://scoop.sh/
+- ps: iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+
+# [NOTE][COMPARE] Required PATH changes to separated file, because “PATH” must be set before grunt-pylint installation:
+# https://ci.appveyor.com/project/Kristinita/sashagruntdebugging/builds/24778322
+# https://ci.appveyor.com/project/Kristinita/sashagruntdebugging/builds/24778353
+- '%APPVEYOR_BUILD_FOLDER%/appveyor-pathed.bat'
 - refreshenv
-- "%APPVEYOR_BUILD_FOLDER%/appveyor-install.bat"
+
+# [NOTE] npm parallel doesn’t work, example:
+# https://ci.appveyor.com/project/Kristinita/sashapelicantest/build/1.0.25/job/70x5h1qq2d6j8gyp
+# [NOTE] start command doesn’t work without batch file:
+# https://ci.appveyor.com/project/Kristinita/sashapelicantest/build/1.0.31
+# [LEARN][APPVEYOR] Project folder:
+# https://github.com/vim/vim-win32-installer/blob/master/appveyor.yml
+- '%APPVEYOR_BUILD_FOLDER%/appveyor-install.bat'
+- pathed /APPEND %USERPROFILE%\.dotnet\tools /USER
+
+# [NOTE] 2 “refreshenv” required, if you use pathed instead of “SET”.
+# [COMPARE] “refreshenv” after install script required:
+# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/24763413
+# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/24763463
 - refreshenv
 
 build_script:
