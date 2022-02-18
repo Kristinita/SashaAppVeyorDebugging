@@ -3,6 +3,8 @@ environment:
 
 platform: x64
 
+clone_depth: 1
+
 image: Visual Studio 2022
 
 init:
@@ -13,6 +15,7 @@ init:
 - SETX PYTHONIOENCODING utf-8
 
 install:
+- "choco install gtools -y & refreshenv & pathed /APPEND %PYTHON% /USER & pathed /APPEND %PYTHON%\Scripts /USER"
 - "%PYTHON%\\python -m pip install --upgrade pip & %PYTHON%\\python -m pip install pipenv & pipenv install --dev & pipenv run peru sync"
 
 build_script:
