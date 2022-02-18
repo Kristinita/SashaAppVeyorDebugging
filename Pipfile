@@ -18,7 +18,6 @@ pillow = "*"
 "ruamel.yaml" = "*"
 peru = "*"
 pylint = "*"
-mdx-custom-span-class = {git = "https://github.com/exaroth/mdx_custom_span_class.git", editable = true}
 csvlexer = {git = "https://github.com/Kristinita/PygmentsCSVLexer.git", editable = true}
 mdx_downheader = {git = "https://github.com/Kristinita/mdx_downheader.git", editable = true, ref = "KiraPatch"}
 pelican = "*"
