@@ -137,7 +137,7 @@ install:
 # [NOTE][COMPARE] Required PATH changes to separated file, because “PATH” must be set before grunt-pylint installation:
 # https://ci.appveyor.com/project/Kristinita/sashagruntdebugging/builds/24778322
 # https://ci.appveyor.com/project/Kristinita/sashagruntdebugging/builds/24778353
-- "choco install gtools -y & refreshenv & pathed /APPEND %PYTHON% /USER & pathed /APPEND %PYTHON%\Scripts /USER"
+- "choco install gtools -y & refreshenv & pathed /APPEND %PYTHON% /USER & pathed /APPEND %PYTHON%\\Scripts /USER"
 - refreshenv
 
 # [NOTE] npm parallel doesn’t work, example:
