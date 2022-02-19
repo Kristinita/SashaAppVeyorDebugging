@@ -131,7 +131,7 @@ install:
 # [NOTE] For local Scoop installation must required:
 # “Set-ExecutionPolicy RemoteSigned -scope CurrentUser”
 # http://scoop.sh/
-- ps: iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+# - ps: iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 
 # [NOTE][COMPARE] Required PATH changes to separated file, because “PATH” must be set before grunt-pylint installation:
 # https://ci.appveyor.com/project/Kristinita/sashagruntdebugging/builds/24778322
