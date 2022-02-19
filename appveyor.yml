@@ -137,7 +137,7 @@ install:
 # [NOTE][COMPARE] Required PATH changes to separated file, because “PATH” must be set before grunt-pylint installation:
 # https://ci.appveyor.com/project/Kristinita/sashagruntdebugging/builds/24778322
 # https://ci.appveyor.com/project/Kristinita/sashagruntdebugging/builds/24778353
-- '%APPVEYOR_BUILD_FOLDER%/batch/appveyor-pathed.bat'
+- "choco install gtools -y & refreshenv & pathed /APPEND %PYTHON% /USER & pathed /APPEND %PYTHON%\Scripts /USER"
 - refreshenv
 
 # [NOTE] npm parallel doesn’t work, example:
@@ -146,8 +146,8 @@ install:
 # https://ci.appveyor.com/project/Kristinita/sashapelicantest/build/1.0.31
 # [LEARN][APPVEYOR] Project folder:
 # https://github.com/vim/vim-win32-installer/blob/master/appveyor.yml
-- '%APPVEYOR_BUILD_FOLDER%/batch/appveyor-install.bat'
-- pathed /APPEND %USERPROFILE%\.dotnet\tools /USER
+- "%PYTHON%\\python -m pip install pipenv & pipenv install --dev"
+# - pathed /APPEND %USERPROFILE%\.dotnet\tools /USER
 
 # [NOTE] 2 “refreshenv” required, if you use pathed instead of “SET”.
 # [COMPARE] “refreshenv” after install script required:
@@ -160,8 +160,8 @@ build_script:
 - pipenv --version
 
 
-test_script:
-- grunt %GRUNT_TEST%
+# test_script:
+# - grunt %GRUNT_TEST%
 
 
 # [LEARN][APPVEYOR] Simple working configuration:
