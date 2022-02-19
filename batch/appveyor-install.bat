@@ -1,7 +1,7 @@
 @REM @Author: Kristinita
 @REM @Date:   2018-02-28 19:42:16
 @REM @Last Modified by:   Kristinita
-@REM Modified time: 2022-02-19 10:46:37
+@REM Modified time: 2022-02-19 11:39:39
 
 @REM [PURPOSE] Install all AppVeyor dependencies for building and validation.
 
@@ -20,7 +20,7 @@
 @REM [NOTE] Use -ignoredependencies for HTML Tidy installation to AppVeyor
 @REM https://github.com/majkinetor/au-packages/issues/75
 @REM https://ci.appveyor.com/project/Kristinita/sashatidydebugging/build/1.0.12
-rem START /B CMD /C "choco install html-tidy -y -ignoredependencies"
+START /B CMD /C "choco install html-tidy -y -ignoredependencies"
 
 
 @REM [NOTE] Needs “python -m pip install -U pip”, not “pip install -U pip”, because
@@ -42,8 +42,8 @@ rem START /B CMD /C "choco install html-tidy -y -ignoredependencies"
 @REM [NOTE] In this batch file required:
 @REM 1. quotes
 @REM 2. slash escaping
-START /B CMD /C "echo KiraGoddess & %PYTHON%\\python -m pip install pipenv"
-rem START /B CMD /C "choco install nodejs phantomjs -y & npm install -g grunt-cli & npm install"
+START /B CMD /C "%PYTHON%\\python -m pip install pipenv & pipenv install --dev & pipenv run peru sync"
+START /B CMD /C "choco install nodejs phantomjs -y & npm install -g grunt-cli & npm install"
 
 
 @REM [NOTE] Old Ruby 1.9.3 default by September 2020:
@@ -53,10 +53,10 @@ rem START /B CMD /C "choco install nodejs phantomjs -y & npm install -g grunt-cl
 
 @REM [NOTE] In your local machine you need install dotnetcore for localappveyor installation:
 @REM https://chocolatey.org/packages/dotnetcore
-rem START /B CMD /C "dotnet tool install -g localappveyor"
+START /B CMD /C "dotnet tool install -g localappveyor"
 
 
 @REM [NOTE] ShellCheck installation via Scoop — the fastest way for Windows:
 @REM https://github.com/koalaman/shellcheck/issues/915#issuecomment-385049702
 @REM https://help.appveyor.com/discussions/suggestions/843-add-support-for-the-scoop-installer
-rem START /B CMD /C "scoop install shellcheck"
+START /B CMD /C "scoop install shellcheck"

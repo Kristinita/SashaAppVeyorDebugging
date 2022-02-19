@@ -17,7 +17,7 @@ platform: x64
 # https://www.appveyor.com/docs/custom-build-images/#building-shared-image-in-a-dedicated-project
 # https://www.appveyor.com/docs/windows-images-software/#net-framework
 # [INFO] It the latest AppVeyor image for October 2020
-image: Visual Studio 2022
+image: Visual Studio 2019
 
 
 # [INFO] Don’t download all repository history, that save a time:
@@ -39,24 +39,23 @@ init:
 # https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/22144311
 
 # [LINK] “.travis.yml”:
-# - SETX PIPENV_IGNORE_VIRTUALENVS 1
-# - SETX PIPENV_VENV_IN_PROJECT 1
+- SETX PIPENV_IGNORE_VIRTUALENVS 1
+- SETX PIPENV_VENV_IN_PROJECT 1
 # - SETX PIPENV_SKIP_LOCK 1
-# - SETX PIPENV_QUIET 1
 
 # [NOTE] Needs AppVeyor console set, see:
 # https://stackoverflow.com/a/48093971/5951529
-# - SETX PYTHONIOENCODING utf-8
+- SETX PYTHONIOENCODING utf-8
 
 # [LINK] “.travs.yml”
-# - SETX DOTNET_CLI_TELEMETRY_OPTOUT 1
+- SETX DOTNET_CLI_TELEMETRY_OPTOUT 1
 
 # [LINK] “.travs.yml”
-# - SETX GRUNT_PYLINT_SKIP_POSTINSTALL yes
+- SETX GRUNT_PYLINT_SKIP_POSTINSTALL yes
 
 # [NOTE] Disable preventing Node.js warnings:
 # [LINK] “.travis.yml”
-# - SETX NODE_NO_WARNINGS 1
+- SETX NODE_NO_WARNINGS 1
 
 
 # [NOTE] Use “CALL Refreshenv.cmd” for local installation:
@@ -75,9 +74,9 @@ init:
 # [LEARN][APPVEYOR] “configuration” step:
 # https://www.appveyor.com/blog/2018/04/25/specialized-build-matrix-configuration-in-appveyor/
 # “Debug” configuration is default
-# configuration:
-# - Debug
-# - Release
+configuration:
+- Debug
+- Release
 
 
 environment:
@@ -94,26 +93,26 @@ environment:
   # [INFO] Spaces before “&&” doesn't need, compare:
   # https://ci.appveyor.com/project/Kristinita/sashatravis/build/job/5oqxucp76bpsr51o
   # https://ci.appveyor.com/project/Kristinita/sashatravis/build/1.0.38/job/s52ko615e3fpxr9b
-  # GRUNT_BUILD:
+  GRUNT_BUILD:
 
-  # # [NOTE] For AppVeyor I use “clean-console”, not “validatedev”.
-  # # “checkPages” is a task for Travis CI solely;
-  # # for AppVeyor I get bugs, possibly, because HTML not fixed correctly:
-  # # https://ci.appveyor.com/project/Kristinita/kristinitapelican/build/job/o5cwx0ug2htufar8#L2488
-  # GRUNT_TEST: http-server clean-console&& grunt validate remote
+  # [NOTE] For AppVeyor I use “clean-console”, not “validatedev”.
+  # “checkPages” is a task for Travis CI solely;
+  # for AppVeyor I get bugs, possibly, because HTML not fixed correctly:
+  # https://ci.appveyor.com/project/Kristinita/kristinitapelican/build/job/o5cwx0ug2htufar8#L2488
+  GRUNT_TEST: http-server clean-console&& grunt validate remote
 
-  # # [INFO] API key required for LocalAppVeyor:
-  # # https://www.appveyor.com/docs/api/
-  # # https://ci.appveyor.com/api-keys
-  # API_KEY_APPVEYOR:
-  #   # [LEARN][APPVEYOR] Secure variables:
-  #   # Encrypt in remote AppVeyor site, not locally:
-  #   # https://www.appveyor.com/docs/build-configuration/#secure-variables
-  #   secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
+  # [INFO] API key required for LocalAppVeyor:
+  # https://www.appveyor.com/docs/api/
+  # https://ci.appveyor.com/api-keys
+  API_KEY_APPVEYOR:
+    # [LEARN][APPVEYOR] Secure variables:
+    # Encrypt in remote AppVeyor site, not locally:
+    # https://www.appveyor.com/docs/build-configuration/#secure-variables
+    secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
 
-  # # [INFO] API key for PageSpeed Insights:
-  # API_KEY_PAGESPEED_INSIGHTS_V5:
-  #   secure: 0xjbRl5LLYt8QPnzOLNdYFmFMT6j97EnU8Jj97BmRRW9FLebRfeUMrqOulXa3gDi
+  # [INFO] API key for PageSpeed Insights:
+  API_KEY_PAGESPEED_INSIGHTS_V5:
+    secure: 0xjbRl5LLYt8QPnzOLNdYFmFMT6j97EnU8Jj97BmRRW9FLebRfeUMrqOulXa3gDi
 
 
 # [LEARN][APPVEYOR] Build configuration:
@@ -132,12 +131,12 @@ install:
 # [NOTE] For local Scoop installation must required:
 # “Set-ExecutionPolicy RemoteSigned -scope CurrentUser”
 # http://scoop.sh/
-# - ps: iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+- ps: iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 
 # [NOTE][COMPARE] Required PATH changes to separated file, because “PATH” must be set before grunt-pylint installation:
 # https://ci.appveyor.com/project/Kristinita/sashagruntdebugging/builds/24778322
 # https://ci.appveyor.com/project/Kristinita/sashagruntdebugging/builds/24778353
-- "choco install gtools -y & refreshenv & pathed /APPEND %PYTHON% /USER & pathed /APPEND %PYTHON%\\Scripts /USER"
+- '%APPVEYOR_BUILD_FOLDER%/batch/appveyor-pathed.bat'
 - refreshenv
 
 # [NOTE] npm parallel doesn’t work, example:
@@ -146,8 +145,8 @@ install:
 # https://ci.appveyor.com/project/Kristinita/sashapelicantest/build/1.0.31
 # [LEARN][APPVEYOR] Project folder:
 # https://github.com/vim/vim-win32-installer/blob/master/appveyor.yml
-- "%APPVEYOR_BUILD_FOLDER%/batch/appveyor-install.bat"
-# - pathed /APPEND %USERPROFILE%\.dotnet\tools /USER
+- '%APPVEYOR_BUILD_FOLDER%/batch/appveyor-install.bat'
+- pathed /APPEND %USERPROFILE%\.dotnet\tools /USER
 
 # [NOTE] 2 “refreshenv” required, if you use pathed instead of “SET”.
 # [COMPARE] “refreshenv” after install script required:
@@ -157,26 +156,26 @@ install:
 
 
 build_script:
-- pipenv --version
+- grunt %GRUNT_BUILD%
 
 
-# test_script:
-# - grunt %GRUNT_TEST%
+test_script:
+- grunt %GRUNT_TEST%
 
 
 # [LEARN][APPVEYOR] Simple working configuration:
 # https://github.com/Kristinita/SashaAppVeyorDebugging/blob/7ac8c23540c737f403ae280ce6502734833bb85f/appveyor.yml
-# for:
-# -
-#   matrix:
-#     only:
-#     - configuration: Release
-#   environment:
-#     GRUNT_BUILD: publish
-#     # [DONE][FIXED] https://github.com/GoogleChromeLabs/psi/issues/118
-#     # https://github.com/GoogleChromeLabs/psi/pull/120
-#     # [NOTE] Travis CI build run parallel and end before AppVeyor,
-#     # so “afterdeploy” will run after site deployment.
-#     # [BUG][FIXME] “Cannot read property 'metrics' of undefined” bug:
-#     # https://github.com/GoogleChromeLabs/psi/issues/118
-#     GRUNT_TEST: validate remote afterdeploy
+for:
+-
+  matrix:
+    only:
+    - configuration: Release
+  environment:
+    GRUNT_BUILD: publish
+    # [DONE][FIXED] https://github.com/GoogleChromeLabs/psi/issues/118
+    # https://github.com/GoogleChromeLabs/psi/pull/120
+    # [NOTE] Travis CI build run parallel and end before AppVeyor,
+    # so “afterdeploy” will run after site deployment.
+    # [BUG][FIXME] “Cannot read property 'metrics' of undefined” bug:
+    # https://github.com/GoogleChromeLabs/psi/issues/118
+    GRUNT_TEST: validate remote afterdeploy

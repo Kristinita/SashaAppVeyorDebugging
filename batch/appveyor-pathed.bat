@@ -23,4 +23,4 @@
 @REM https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/24763128
 @REM https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/24763463
 @REM https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/24763626
-START /B CMD /C "choco install gtools -y & refreshenv & pathed /APPEND %PYTHON% /USER & pathed /APPEND %PYTHON%\Scripts /USER"
+START /B CMD /C "choco install gtools -y & refreshenv & pathed /APPEND %PYTHON% /USER & pathed /APPEND %PYTHON%\Scripts /USER & pathed /APPEND C:\Ruby30-x64\bin /USER"
