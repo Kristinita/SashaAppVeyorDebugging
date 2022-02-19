@@ -1,7 +1,7 @@
 @REM @Author: Kristinita
 @REM @Date:   2018-02-28 19:42:16
 @REM @Last Modified by:   Kristinita
-@REM Modified time: 2022-02-19 08:35:57
+@REM Modified time: 2022-02-19 09:05:36
 
 @REM [PURPOSE] Install all AppVeyor dependencies for building and validation.
 
@@ -42,7 +42,7 @@ rem START /B CMD /C "choco install html-tidy -y -ignoredependencies"
 @REM [NOTE] In this batch file required:
 @REM 1. quotes
 @REM 2. slash escaping
-START /B CMD /C "%PYTHON%\\python -m pip install --upgrade pip & %PYTHON%\\python -m pip install pipenv & pipenv install --dev & pipenv run peru sync"
+START /B CMD /C "%PYTHON%\\python -m pip install --upgrade pip & %PYTHON%\\python -m pip install pipenv"
 rem START /B CMD /C "choco install nodejs phantomjs -y & npm install -g grunt-cli & npm install"
 
 
