@@ -157,7 +157,7 @@ install:
 
 
 build_script:
-- pipenv run pelican content -s pelicanconf.py --fatal warnings --debug
+- pipenv --version
 
 
 # test_script:
