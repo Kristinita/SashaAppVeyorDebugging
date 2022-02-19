@@ -42,20 +42,21 @@ init:
 - SETX PIPENV_IGNORE_VIRTUALENVS 1
 - SETX PIPENV_VENV_IN_PROJECT 1
 # - SETX PIPENV_SKIP_LOCK 1
+- SETX PIPENV_QUIET 1
 
 # [NOTE] Needs AppVeyor console set, see:
 # https://stackoverflow.com/a/48093971/5951529
-- SETX PYTHONIOENCODING utf-8
+# - SETX PYTHONIOENCODING utf-8
 
 # [LINK] “.travs.yml”
-- SETX DOTNET_CLI_TELEMETRY_OPTOUT 1
+# - SETX DOTNET_CLI_TELEMETRY_OPTOUT 1
 
 # [LINK] “.travs.yml”
-- SETX GRUNT_PYLINT_SKIP_POSTINSTALL yes
+# - SETX GRUNT_PYLINT_SKIP_POSTINSTALL yes
 
 # [NOTE] Disable preventing Node.js warnings:
 # [LINK] “.travis.yml”
-- SETX NODE_NO_WARNINGS 1
+# - SETX NODE_NO_WARNINGS 1
 
 
 # [NOTE] Use “CALL Refreshenv.cmd” for local installation:
@@ -93,26 +94,26 @@ environment:
   # [INFO] Spaces before “&&” doesn't need, compare:
   # https://ci.appveyor.com/project/Kristinita/sashatravis/build/job/5oqxucp76bpsr51o
   # https://ci.appveyor.com/project/Kristinita/sashatravis/build/1.0.38/job/s52ko615e3fpxr9b
-  GRUNT_BUILD:
+  # GRUNT_BUILD:
 
-  # [NOTE] For AppVeyor I use “clean-console”, not “validatedev”.
-  # “checkPages” is a task for Travis CI solely;
-  # for AppVeyor I get bugs, possibly, because HTML not fixed correctly:
-  # https://ci.appveyor.com/project/Kristinita/kristinitapelican/build/job/o5cwx0ug2htufar8#L2488
-  GRUNT_TEST: http-server clean-console&& grunt validate remote
+  # # [NOTE] For AppVeyor I use “clean-console”, not “validatedev”.
+  # # “checkPages” is a task for Travis CI solely;
+  # # for AppVeyor I get bugs, possibly, because HTML not fixed correctly:
+  # # https://ci.appveyor.com/project/Kristinita/kristinitapelican/build/job/o5cwx0ug2htufar8#L2488
+  # GRUNT_TEST: http-server clean-console&& grunt validate remote
 
-  # [INFO] API key required for LocalAppVeyor:
-  # https://www.appveyor.com/docs/api/
-  # https://ci.appveyor.com/api-keys
-  API_KEY_APPVEYOR:
-    # [LEARN][APPVEYOR] Secure variables:
-    # Encrypt in remote AppVeyor site, not locally:
-    # https://www.appveyor.com/docs/build-configuration/#secure-variables
-    secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
+  # # [INFO] API key required for LocalAppVeyor:
+  # # https://www.appveyor.com/docs/api/
+  # # https://ci.appveyor.com/api-keys
+  # API_KEY_APPVEYOR:
+  #   # [LEARN][APPVEYOR] Secure variables:
+  #   # Encrypt in remote AppVeyor site, not locally:
+  #   # https://www.appveyor.com/docs/build-configuration/#secure-variables
+  #   secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
 
-  # [INFO] API key for PageSpeed Insights:
-  API_KEY_PAGESPEED_INSIGHTS_V5:
-    secure: 0xjbRl5LLYt8QPnzOLNdYFmFMT6j97EnU8Jj97BmRRW9FLebRfeUMrqOulXa3gDi
+  # # [INFO] API key for PageSpeed Insights:
+  # API_KEY_PAGESPEED_INSIGHTS_V5:
+  #   secure: 0xjbRl5LLYt8QPnzOLNdYFmFMT6j97EnU8Jj97BmRRW9FLebRfeUMrqOulXa3gDi
 
 
 # [LEARN][APPVEYOR] Build configuration:
