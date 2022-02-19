@@ -146,7 +146,7 @@ install:
 # https://ci.appveyor.com/project/Kristinita/sashapelicantest/build/1.0.31
 # [LEARN][APPVEYOR] Project folder:
 # https://github.com/vim/vim-win32-installer/blob/master/appveyor.yml
-- "echo KiraGoddess & %PYTHON%\\python -m pip install pipenv"
+- "echo KiraGoddess & %PYTHON%\\python -m pip install pipenv & pipenv install --dev & pipenv run peru sync"
 # - pathed /APPEND %USERPROFILE%\.dotnet\tools /USER
 
 # [NOTE] 2 “refreshenv” required, if you use pathed instead of “SET”.
@@ -157,7 +157,7 @@ install:
 
 
 build_script:
-- pipenv --version
+- pipenv run pelican content -s pelicanconf.py --fatal warnings --debug
 
 
 # test_script:
