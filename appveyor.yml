@@ -39,8 +39,8 @@ init:
 # https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/22144311
 
 # [LINK] “.travis.yml”:
-- SETX PIPENV_IGNORE_VIRTUALENVS 1
-- SETX PIPENV_VENV_IN_PROJECT 1
+# - SETX PIPENV_IGNORE_VIRTUALENVS 1
+# - SETX PIPENV_VENV_IN_PROJECT 1
 # - SETX PIPENV_SKIP_LOCK 1
 # - SETX PIPENV_QUIET 1
 
@@ -146,7 +146,7 @@ install:
 # https://ci.appveyor.com/project/Kristinita/sashapelicantest/build/1.0.31
 # [LEARN][APPVEYOR] Project folder:
 # https://github.com/vim/vim-win32-installer/blob/master/appveyor.yml
-- "%APPVEYOR_BUILD_FOLDER%/batch/appveyor-install.bat"
+- "%PYTHON%\\python -m pip install --upgrade pip & %PYTHON%\\python -m pip install pipenv"
 # - pathed /APPEND %USERPROFILE%\.dotnet\tools /USER
 
 # [NOTE] 2 “refreshenv” required, if you use pathed instead of “SET”.
