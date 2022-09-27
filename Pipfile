@@ -16,3 +16,4 @@ djlint = "*"
 md-mermaid = {editable = true, ref = "KiraMermaidWorking", git = "https://github.com/Kristinita/md_mermaid.git"}
 pelican-sitemap = "*"
 pelican-search = {editable = true, ref = "KiraFixWindowsPath", git = "https://github.com/Kristinita/search.git"}
+pygments-csv-lexer = {editable = true, ref = "patch-1", git = "https://github.com/Kristinita/pygments-csv-lexer.git"}
