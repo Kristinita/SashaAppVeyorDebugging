@@ -13,6 +13,7 @@ init:
 - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
 install:
+- "%PYTHON%\\python -m pip install --upgrade pip"
 - "%PYTHON%\\python -m pip install pipenv"
 - pipenv install --dev --verbose
 
