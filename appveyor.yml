@@ -1,13 +1,14 @@
 platform: x64
 
+environment:
+  PYTHON: C:\Python310-x64
+
 init:
 - SETX PIPENV_IGNORE_VIRTUALENVS 1
 - SETX PIPENV_VENV_IN_PROJECT 1
 - SETX PIPENV_SKIP_LOCK 1
 - SETX PYTHONIOENCODING utf-8
-
-environment:
-  PYTHON: C:\Python310-x64
+- "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
 install:
 - pip install pipenv
