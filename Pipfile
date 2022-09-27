@@ -1,2 +1,18 @@
 [dev-packages]
+pelican = "*"
+pymdown-extensions = "*"
+pip-review = "*"
+pip-licenses = "*"
+bashate = "*"
+"ruamel.yaml" = "*"
+peru = "*"
+pylint = "*"
+markdown-link-attr-modifier = "*"
+python-markdown-comments = "*"
 markdown = "*"
+markdown-headdown = "*"
+beautifulsoup4 = "*"
+djlint = "*"
+md-mermaid = {editable = true, ref = "KiraMermaidWorking", git = "https://github.com/Kristinita/md_mermaid.git"}
+pelican-sitemap = "*"
+pelican-search = {editable = true, ref = "KiraFixWindowsPath", git = "https://github.com/Kristinita/search.git"}
