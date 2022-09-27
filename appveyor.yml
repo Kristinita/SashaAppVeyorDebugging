@@ -11,7 +11,7 @@ init:
 - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
 install:
-- pip install pipenv
+- "%PYTHON%\\python -m pip install pipenv"
 - pipenv install --dev
 
 build_script:
