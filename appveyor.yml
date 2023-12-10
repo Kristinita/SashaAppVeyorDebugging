@@ -2,20 +2,12 @@ platform: x64
 
 image: Visual Studio 2022
 
-environment:
-  PYTHON: C:\Python310-x64
-
-init:
-- SETX PIPENV_IGNORE_VIRTUALENVS 1
-- SETX PIPENV_VENV_IN_PROJECT 1
-- SETX PIPENV_SKIP_LOCK 1
-- SETX PYTHONIOENCODING utf-8
-- "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-
 install:
-- "%PYTHON%\\python -m pip install --upgrade pip"
-- "%PYTHON%\\python -m pip install pipenv"
-- pipenv install --dev --verbose
+- choco install nodejs -y
+- npm install -g postcss-cli doiuse editorconfig-checker
 
 build_script:
-- pipenv --version
+- more KiraExampleCSS.css
+- postcss KiraExample.css -u doiuse -o KiraPostCSS.css
+- more KiraPostCSS.css
+- editorconfig-checker
