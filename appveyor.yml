@@ -5,11 +5,10 @@ image: Visual Studio 2022
 clone_depth: 1
 
 install:
-- choco install nodejs -y
 - npm install -g postcss-cli doiuse editorconfig-checker
 
 build_script:
-- postcss KiraExample.css -u doiuse -o KiraPostCSS.css
+- postcss KiraExampleCSS.css -u doiuse -o KiraPostCSS.css
 
 test_script:
 - more KiraExampleCSS.css
