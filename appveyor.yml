@@ -5,7 +5,7 @@ image: Visual Studio 2022
 clone_depth: 1
 
 install:
-- choco install nodejs googlechrome -y
+- choco install nodejs googlechrome -y --ignore-checksums
 - npm install -g lighthouse
 
 build_script:
