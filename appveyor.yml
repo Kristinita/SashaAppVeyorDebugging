@@ -4,8 +4,8 @@ image: Visual Studio 2022
 
 clone_depth: 1
 
-install:
-- npm install -g pa11y-ci
+environment:
+  PYTHON: C:\Python312-x64
 
 build_script:
-- pa11y-ci https://pa11y.org/
+- python KiraGetFileCreationTime.py
