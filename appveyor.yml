@@ -4,10 +4,16 @@ image: Visual Studio 2022
 
 clone_depth: 1
 
+cache:
+- C:\ProgramData\chocolatey\bin
+- C:\ProgramData\chocolatey\lib
+- node_modules
+
 install:
 - choco install nodejs fd -y
 - npm install --global @coffeelint/cli
 
 build_script:
+- where xargs
 - where coffeelint
 - "fd -0 -e coffee | xargs -0 coffeelint"
