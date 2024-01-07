@@ -5,13 +5,9 @@ image: Visual Studio 2022
 clone_depth: 1
 
 install:
-- choco install nodejs -y
-- npm install -g postcss-cli doiuse editorconfig-checker
+- choco install nodejs fd -y
+- npm install --global @coffeelint/cli
 
 build_script:
-- postcss KiraExampleCSS.css -u doiuse -o KiraPostCSS.css
-
-test_script:
-- more KiraExampleCSS.css
-- more KiraPostCSS.css
-- editorconfig-checker
+- where coffeelint
+- "fd -0 -e coffee | xargs -0 coffeelint"
