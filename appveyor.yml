@@ -7,7 +7,7 @@ clone_depth: 1
 cache:
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib
-- node_modules
+- "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
 
 install:
 - choco install nodejs fd -y
