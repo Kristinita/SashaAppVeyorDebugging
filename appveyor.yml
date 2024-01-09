@@ -10,6 +10,10 @@ cache:
 - "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
 - "%APPVEYOR_BUILD_FOLDER%/node_modules"
 
+before_build:
+- where node
+- where npm
+
 install:
 - choco install nodejs -y
 - npm install --global @coffeelint/cli
