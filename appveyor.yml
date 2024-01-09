@@ -11,7 +11,7 @@ cache:
 - "%APPVEYOR_BUILD_FOLDER%/node_modules"
 
 install:
-- choco install node.js -y
+- choco install nodejs -y
 - npm install --global @coffeelint/cli
 - npm install --save-dev @coffeelint/cli
 
