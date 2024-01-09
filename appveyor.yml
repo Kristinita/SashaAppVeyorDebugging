@@ -8,9 +8,13 @@ cache:
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib
 - "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
+- "%APPVEYOR_BUILD_FOLDER%/node_modules"
 
 install:
-- choco install packages.config -y
+- choco install node.js -y
+- npm install --global @coffeelint/cli
+- npm install --save-dev @coffeelint/cli
 
 build_script:
-- tidy --version
+- <KiraList.txt xargs --replace=KiraFilename coffeelint KiraFilename
+- <KiraList.txt xargs --replace=KiraFilename npx coffeelint KiraFilename
