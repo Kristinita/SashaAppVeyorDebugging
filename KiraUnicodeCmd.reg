@@ -11,6 +11,11 @@ Windows Registry Editor Version 5.00
 "OEMCP"="65001"
 "MACCP"="65001"
 
-; https://superuser.com/a/927575/572069
-; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\CodePage]
-; "OEMCP"="65001"
+; https://pcportal.org/forum/8-3145-1
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\Language]
+"Default"="0419"
+"InstallLanguage"="0409"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\Locale]
+"(Default)"="00000419"
+"(Default)"="00000409"
