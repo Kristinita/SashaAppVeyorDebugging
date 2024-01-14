@@ -25,5 +25,5 @@ build_script:
 - chcp
 - ls
 - dir
-- tidy -config tidy.conf KiraValidHTML.html
-- tidy -config tidy.conf КираВалидныйHTML.html
+- tidy --quiet yes KiraValidHTML.html
+- tidy --quiet yes КираВалидныйHTML.html
