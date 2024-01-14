@@ -1,0 +1,6 @@
+Windows Registry Editor Version 5.00
+
+; [PURPOSE] Set unicode output for Windows cmd.exe console:
+; https://stackoverflow.com/a/24711864/5951529
+[HKEY_CURRENT_USER\Console\%SystemRoot%_system32_cmd.exe]
+"CodePage"=dword:0000fde9
