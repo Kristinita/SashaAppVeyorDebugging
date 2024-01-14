@@ -20,7 +20,7 @@ install:
 - reg import KiraUnicodeCmd.reg
 # - ps: Set-WinSystemLocale ru-RU
 - timeout 10
-- shutdown /sg
+- shutdown /g
 - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 
 before_build:
