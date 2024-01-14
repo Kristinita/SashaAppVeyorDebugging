@@ -14,22 +14,22 @@ cache:
 #   nodejs_version: "21"
 
 init:
-- ps: GET-WinSystemLocale
+- "systeminfo | findstr /B /C:\"System Locale\""
 
 install:
 - ps: Set-WinSystemLocale ru-RU
 - ps: Start-Sleep -s 5
-- ps: Restart-Computer
+- shutdown /r
 - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 
 before_build:
 - where ls
 - where dir
-- ps: GET-WinSystemLocale
+- "systeminfo | findstr /B /C:\"System Locale\""
 
 build_script:
 - chcp
 - ls
 - dir
-- ps: tidy --quiet yes KiraValidHTML.html
-- ps: tidy --quiet yes КираВалидныйHTML.html
+- tidy --quiet yes KiraValidHTML.html
+- tidy --quiet yes КираВалидныйHTML.html
