@@ -15,11 +15,11 @@ cache:
 
 init:
 - "systeminfo | findstr /B /C:\"System Locale\""
+- reg import KiraUnicodeCmd.reg
 - timeout 10
 - shutdown /r
 
 install:
-- reg import KiraUnicodeCmd.reg
 # - ps: Set-WinSystemLocale ru-RU
 # - ps: Restart-Computer
 - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
