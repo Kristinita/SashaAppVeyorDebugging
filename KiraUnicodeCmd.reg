@@ -4,3 +4,7 @@ Windows Registry Editor Version 5.00
 ; https://stackoverflow.com/a/24711864/5951529
 [HKEY_CURRENT_USER\Console\%SystemRoot%_system32_cmd.exe]
 "CodePage"=dword:0000fde9
+
+; https://superuser.com/a/927575/572069
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\CodePage]
+"OEMCP"="65001"
