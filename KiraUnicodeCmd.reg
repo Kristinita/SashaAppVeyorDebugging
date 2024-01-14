@@ -6,16 +6,16 @@ Windows Registry Editor Version 5.00
 "CodePage"=dword:0000fde9
 
 ; https://stackoverflow.com/a/68066008/5951529
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\CodePage]
-"ACP"="65001"
-"OEMCP"="65001"
-"MACCP"="65001"
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\CodePage]
+; "ACP"="65001"
+; "OEMCP"="65001"
+; "MACCP"="65001"
 
 ; https://pcportal.org/forum/8-3145-1
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\Language]
-"Default"="0419"
-"InstallLanguage"="0409"
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\Language]
+; "Default"="0419"
+; "InstallLanguage"="0409"
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\Locale]
-"(Default)"="00000419"
-"(Default)"="00000409"
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\Locale]
+; "(Default)"="00000419"
+; "(Default)"="00000409"

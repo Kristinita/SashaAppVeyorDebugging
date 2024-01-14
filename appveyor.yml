@@ -13,6 +13,12 @@ cache:
 # environment:
 #   nodejs_version: "21"
 
+init:
+- ps: GET-WinSystemLocale
+- ps: Set-WinSystemLocale ru-RU
+- ps: Start-Sleep -s 5; Restart-Computer
+- ps: Start-Sleep -s 5
+
 install:
 - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 - reg import KiraUnicodeCmd.reg
@@ -20,6 +26,7 @@ install:
 before_build:
 - where ls
 - where dir
+- ps: GET-WinSystemLocale
 
 build_script:
 - chcp
