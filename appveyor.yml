@@ -1,27 +1,23 @@
 platform: x64
 
-image: Visual Studio 2013
+image: Visual Studio 2022
 
 clone_depth: 1
 
 cache:
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib
-- "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
-- "%APPVEYOR_BUILD_FOLDER%/node_modules"
+# - "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
+# - "%APPVEYOR_BUILD_FOLDER%/node_modules"
 
-environment:
-  nodejs_version: "21"
-
-before_build:
-- where node
-- where npm
+# environment:
+#   nodejs_version: "21"
 
 install:
-- ps: Install-Product node $env:nodejs_version
-- npm install --global @coffeelint/cli
-- npm install --save-dev @coffeelint/cli
+- choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 
 build_script:
-- <KiraList.txt xargs --replace=KiraFilename coffeelint KiraFilename
-- <KiraList.txt xargs --replace=KiraFilename npx coffeelint KiraFilename
+- ls
+- dir
+- tidy -config tidy.conf КираВалидныйHTML.html
+- tidy -config tidy.conf КираНевалидныйHTML.html
