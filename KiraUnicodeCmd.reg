@@ -6,5 +6,5 @@ Windows Registry Editor Version 5.00
 "CodePage"=dword:0000fde9
 
 ; https://superuser.com/a/927575/572069
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\CodePage]
-"OEMCP"="65001"
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\CodePage]
+; "OEMCP"="65001"
