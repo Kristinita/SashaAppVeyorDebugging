@@ -5,32 +5,26 @@ image: Visual Studio 2022
 clone_depth: 1
 
 cache:
-- C:\ProgramData\chocolatey\bin
-- C:\ProgramData\chocolatey\lib
-# - "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
-# - "%APPVEYOR_BUILD_FOLDER%/node_modules"
+# - C:\ProgramData\chocolatey\bin
+# - C:\ProgramData\chocolatey\lib
+- "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
+- "%APPVEYOR_BUILD_FOLDER%/node_modules"
 
-# environment:
-#   nodejs_version: "21"
+environment:
+  nodejs_version: "21"
 
 init:
 - "systeminfo | findstr /B /C:\"System Locale\""
 
 install:
-- reg import KiraUnicodeCmd.reg
+# - reg import KiraUnicodeCmd.reg
 # - ps: Set-WinSystemLocale ru-RU
-- shutdown /r
+# - shutdown /r
 # - ps: Restart-Computer
-- choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
-
-before_build:
-- where ls
-- where dir
-- "systeminfo | findstr /B /C:\"System Locale\""
+# - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
+- npm install --global htmlhint
 
 build_script:
 - chcp
-- ls
-- dir
-- tidy --quiet yes KiraValidHTML.html
-- tidy --quiet yes КираВалидныйHTML.html
+- htmlhint KiraValidHTML.html
+- htmlhint КираВалидныйHTML.html
