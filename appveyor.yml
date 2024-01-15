@@ -5,8 +5,8 @@ image: Visual Studio 2022
 clone_depth: 1
 
 cache:
-# - C:\ProgramData\chocolatey\bin
-# - C:\ProgramData\chocolatey\lib
+- C:\ProgramData\chocolatey\bin
+- C:\ProgramData\chocolatey\lib
 - "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
 # - "%APPVEYOR_BUILD_FOLDER%/node_modules"
 
@@ -17,15 +17,19 @@ install:
 - reg import KiraUnicodeCmd.reg
 - shutdown /r
 # - ps: Restart-Computer
-# - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 - timeout 10
+- choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 - npm install --global htmlhint
 
 before_build:
-- node --version
-- htmlhint --version
 - chcp
+- node --version
+- tidy --version
+- htmlhint --version
+
 
 build_script:
 - htmlhint KiraValidHTML.html
 - htmlhint КираВалидныйHTML.html
+- tidy --quiet yes KiraValidHTML.html
+- tidy --quiet yes КираВалидныйHTML.html
