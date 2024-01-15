@@ -15,10 +15,10 @@ environment:
 
 install:
 - reg import KiraUnicodeCmd.reg
-# - shutdown /r
-- ps: Restart-Computer
+- shutdown /r
+# - ps: Restart-Computer
 # - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
-- timeout 10
+- timeout 20
 - npm install --global htmlhint
 
 before_build:
