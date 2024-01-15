@@ -14,11 +14,11 @@ environment:
   nodejs_version: "21"
 
 install:
-# - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
-# - shutdown /r /t 0
+- reg import appveyor/EnableUnicodeUTF8Worldwide.reg
+- shutdown /r /t 0
 # - ps: Restart-Computer
 # - timeout 10
-# - reg import appveyor/EnableChcp65001.reg
+- reg import appveyor/EnableChcp65001.reg
 # - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 # - npm install --global htmlhint
 - npm install --global htmllint-cli
