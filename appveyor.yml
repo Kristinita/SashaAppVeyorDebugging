@@ -14,10 +14,11 @@ environment:
   nodejs_version: "21"
 
 install:
-- reg import KiraUnicodeCmd.reg
+- reg import appveyor/EnableUnicodeUTF8Worldwide.reg
 # - shutdown /r
 - ps: Restart-Computer
 # - timeout 20
+- reg import appveyor/EnableChcp65001.reg
 - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 - npm install --global htmlhint
 
@@ -26,7 +27,6 @@ before_build:
 - node --version
 - tidy --version
 - htmlhint --version
-
 
 build_script:
 - htmlhint KiraValidHTML.html

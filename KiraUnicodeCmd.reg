@@ -5,7 +5,10 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Console\%SystemRoot%_system32_cmd.exe]
 "CodePage"=dword:0000fde9
 
+; [PURPOSE] Enable “Beta: Use Unicode UTF-8 for worldwide language support”
 ; https://stackoverflow.com/a/68066008/5951529
+;
+; [INFO] System restart required
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Nls\CodePage]
 "ACP"="65001"
 "OEMCP"="65001"
