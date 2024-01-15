@@ -14,22 +14,26 @@ environment:
   nodejs_version: "21"
 
 install:
-- reg import appveyor/EnableUnicodeUTF8Worldwide.reg
-- shutdown /r /t 0
+# - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
+# - shutdown /r /t 0
 # - ps: Restart-Computer
 # - timeout 10
-- reg import appveyor/EnableChcp65001.reg
-- choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
-- npm install --global htmlhint
+# - reg import appveyor/EnableChcp65001.reg
+# - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
+# - npm install --global htmlhint
+- npm install --global htmllint
 
 before_build:
 - chcp
 - node --version
-- tidy --version
-- htmlhint --version
+# - tidy --version
+# - htmlhint --version
+- htmllint --version
 
 build_script:
-- htmlhint KiraValidHTML.html
-- htmlhint КираВалидныйHTML.html
-- tidy --quiet yes KiraValidHTML.html
-- tidy --quiet yes КираВалидныйHTML.html
+# - htmlhint KiraValidHTML.html
+# - htmlhint КираВалидныйHTML.html
+- htmllint KiraValidHTML.html
+- htmllint КираВалидныйHTML.html
+# - tidy --quiet yes KiraValidHTML.html
+# - tidy --quiet yes КираВалидныйHTML.html
