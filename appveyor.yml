@@ -15,7 +15,7 @@ environment:
 
 install:
 - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
-# - shutdown /r /t 0
+- shutdown /r /t 0
 # - ps: Restart-Computer
 # - timeout 10
 - reg import appveyor/EnableChcp65001.reg
