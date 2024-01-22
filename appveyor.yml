@@ -53,7 +53,7 @@ before_build:
 - linkchecker --version
 - where start
 # - start /b cmd /c http-server --port 4147
-- "%APPVEYOR_BUILD_FOLDER%/appveyor/Daemons.bat"
+- nohup http-server --port 4147
 
 build_script:
 # - htmlhint KiraValidHTML.html
