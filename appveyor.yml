@@ -5,6 +5,7 @@ image: Visual Studio 2022
 clone_depth: 1
 
 environment:
+  APPVEYOR_SAVE_CACHE_ON_ERROR: true
   nodejs_version: "21"
   PYTHON: C:\Python312-x64
 
@@ -20,8 +21,7 @@ cache:
 # - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Scripts"
 
 init:
-- SETX APPVEYOR_SAVE_CACHE_ON_ERROR true
-- SETX /m PATH "%PATH%;%PYTHON%\Scripts"
+# - SETX /m PATH "%PATH%;%PYTHON%\Scripts"
 
 install:
 # - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
@@ -31,9 +31,12 @@ install:
 # - reg import appveyor/EnableChcp65001.reg
 # - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 # - npm install --global htmlhint
-- npm install --global @axe-core/cli fkill-cli http-server
+- npm install --global @axe-core/cli fkill-cli http-server pa11y-ci
 - "%PYTHON%\\python -m pip install linkchecker"
-- choco install googlechrome --yes
+- choco install gtools googlechrome --yes
+- pathed /APPEND %PYTHON% /USER
+- pathed /APPEND %PYTHON%\Scripts /USER
+
 
 before_build:
 # - chcp
@@ -41,7 +44,9 @@ before_build:
 # - tidy --version
 # - htmlhint --version
 # - htmllint --version
-- echo %PATH%
+# - echo %PATH%
+- linkchecker --version
+- pa11y-ci --version
 - -ps: Start-Process "cmd" -ArgumentList "/c http-server --port 4147"
 
 build_script:
@@ -54,4 +59,4 @@ build_script:
 - axe http://localhost:4147/KiraTestedHTML.html
 - linkchecker http://localhost:4147/KiraTestedHTML.html
 - fkill :4147 --force
-- linkchecker http://localhost:4147/KiraTestedHTML.html
+# - linkchecker http://localhost:4147/KiraTestedHTML.html
