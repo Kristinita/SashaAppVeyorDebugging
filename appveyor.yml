@@ -39,6 +39,7 @@ install:
 - where pathed
 - pathed /APPEND %PYTHON% /USER
 - pathed /APPEND %PYTHON%\Scripts /USER
+- refreshenv
 
 
 before_build:
