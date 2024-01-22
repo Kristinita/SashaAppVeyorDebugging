@@ -33,7 +33,6 @@ install:
 # - npm install --global htmlhint
 - npm install --global @axe-core/cli fkill-cli http-server
 - "%PYTHON%\\python -m pip install linkchecker"
-- cmd: http-server --port 4147
 
 before_build:
 # - chcp
@@ -42,6 +41,7 @@ before_build:
 # - htmlhint --version
 # - htmllint --version
 - echo %PATH%
+- Start-Process "cmd" -ArgumentList "/c http-server port 4147"
 
 build_script:
 # - htmlhint KiraValidHTML.html
