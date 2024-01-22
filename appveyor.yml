@@ -21,7 +21,7 @@ cache:
 
 init:
 - SETX APPVEYOR_SAVE_CACHE_ON_ERROR true
-- SETX PATH=%PYTHON%\Scripts;%PATH%"
+- SETX /m PATH "%PATH%;%PYTHON%\Scripts"
 
 install:
 # - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
@@ -35,12 +35,13 @@ install:
 - "%PYTHON%\\python -m pip install linkchecker"
 - http-server --port 4147
 
-# before_build:
+before_build:
 # - chcp
 # - node --version
 # - tidy --version
 # - htmlhint --version
 # - htmllint --version
+- echo %PATH%
 
 build_script:
 # - htmlhint KiraValidHTML.html
