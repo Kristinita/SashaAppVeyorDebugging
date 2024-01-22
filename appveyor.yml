@@ -48,8 +48,8 @@ before_build:
 # - htmlhint --version
 # - htmllint --version
 # - echo %PATH%
-- linkchecker --version
 - pa11y-ci --version
+- linkchecker --version
 - -ps: Start-Process "cmd" -ArgumentList "/c http-server --port 4147"
 
 build_script:
