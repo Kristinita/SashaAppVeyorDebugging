@@ -51,7 +51,7 @@ before_build:
 # - echo %PATH%
 - pa11y-ci --version
 - linkchecker --version
-- -ps: Start-Process "cmd" -ArgumentList "/c http-server --port 4147"
+- ps: Start-Process "cmd" -ArgumentList "/c http-server --port 4147"
 
 build_script:
 # - htmlhint KiraValidHTML.html
