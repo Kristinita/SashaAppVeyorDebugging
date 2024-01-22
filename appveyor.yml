@@ -36,7 +36,7 @@ install:
 - choco install googlechrome --yes
 - choco install gtools --yes --force
 - refreshenv
-- where pathed
+# - where pathed
 - pathed /APPEND %PYTHON% /USER
 - pathed /APPEND %PYTHON%\Scripts /USER
 - refreshenv
@@ -51,7 +51,8 @@ before_build:
 # - echo %PATH%
 - pa11y-ci --version
 - linkchecker --version
-- cmd /c http-server --port 4147
+- where start
+- start /b http-server --port 4147
 
 build_script:
 # - htmlhint KiraValidHTML.html
