@@ -52,8 +52,9 @@ before_build:
 - pa11y-ci --version
 - linkchecker --version
 - where start
+- "%APPVEYOR_BUILD_FOLDER%\\appveyor\\daemons.bat"
 # - start /b cmd /c http-server --port 4147
-- http-server --port 4147 &
+# - http-server --port 4147 &
 
 build_script:
 # - htmlhint KiraValidHTML.html
