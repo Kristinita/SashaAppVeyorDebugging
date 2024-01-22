@@ -15,7 +15,7 @@ cache:
 - C:\ProgramData\chocolatey\lib
 - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
-- "%PYTHON%\\Lib\\site-packages"
+# - "%PYTHON%\\Lib\\site-packages"
 # - "%PYTHON%\\Scripts"
 # - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Lib\\site-packages"
 # - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Scripts"
