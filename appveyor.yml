@@ -34,6 +34,7 @@ install:
 - npm install --global @axe-core/cli fkill-cli http-server pa11y-ci
 - "%PYTHON%\\python -m pip install linkchecker"
 - choco install gtools googlechrome --yes
+- refreshenv
 - pathed /APPEND %PYTHON% /USER
 - pathed /APPEND %PYTHON%\Scripts /USER
 
