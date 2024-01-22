@@ -10,8 +10,8 @@ environment:
 
 
 cache:
-- C:\ProgramData\chocolatey\bin
-- C:\ProgramData\chocolatey\lib
+# - C:\ProgramData\chocolatey\bin
+# - C:\ProgramData\chocolatey\lib
 - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
 - "%PYTHON%\\Lib\\site-packages"
@@ -37,7 +37,7 @@ before_build:
 # - tidy --version
 # - htmlhint --version
 # - htmllint --version
-- http-server --port 4147
+- ps: Start-Process http-server --port 4147
 
 build_script:
 # - htmlhint KiraValidHTML.html
