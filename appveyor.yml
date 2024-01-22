@@ -42,7 +42,7 @@ before_build:
 # - htmlhint --version
 # - htmllint --version
 - echo %PATH%
-- -ps: Start-Process "cmd" -ArgumentList "/c http-server port 4147"
+- -ps: Start-Process "cmd" -ArgumentList "/c http-server --port 4147"
 
 build_script:
 # - htmlhint KiraValidHTML.html
