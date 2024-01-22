@@ -52,7 +52,7 @@ before_build:
 - pa11y-ci --version
 - linkchecker --version
 - where start
-- start /b http-server --port 4147
+- start /b cmd /c http-server --port 4147
 
 build_script:
 # - htmlhint KiraValidHTML.html
