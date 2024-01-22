@@ -63,4 +63,4 @@ build_script:
 - pa11y-ci http://localhost:4147/KiraTestedHTML.html
 - linkchecker http://localhost:4147/KiraTestedHTML.html
 - fkill :4147 --force
-# - linkchecker http://localhost:4147/KiraTestedHTML.html
+- linkchecker http://localhost:4147/KiraTestedHTML.html
