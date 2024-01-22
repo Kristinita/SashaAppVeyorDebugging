@@ -33,7 +33,7 @@ install:
 # - npm install --global htmlhint
 - npm install --global @axe-core/cli fkill-cli http-server
 - "%PYTHON%\\python -m pip install linkchecker"
-- http-server --port 4147
+- cmd: http-server --port 4147
 
 before_build:
 # - chcp
