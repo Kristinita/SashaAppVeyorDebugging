@@ -15,8 +15,8 @@ cache:
 - C:\ProgramData\chocolatey\lib
 - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
-# - "%PYTHON%\\Lib\\site-packages"
-# - "%PYTHON%\\Scripts"
+- "%PYTHON%\\Lib\\site-packages"
+- "%PYTHON%\\Scripts"
 # - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Lib\\site-packages"
 # - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Scripts"
 
@@ -60,7 +60,7 @@ build_script:
 # - htmllint КираВалидныйHTML.html
 # - tidy --quiet yes KiraValidHTML.html
 # - tidy --quiet yes КираВалидныйHTML.html
-- axe http://localhost:4147/KiraTestedHTML.html
+- pa11y-ci http://localhost:4147/KiraTestedHTML.html
 - linkchecker http://localhost:4147/KiraTestedHTML.html
 - fkill :4147 --force
 # - linkchecker http://localhost:4147/KiraTestedHTML.html
