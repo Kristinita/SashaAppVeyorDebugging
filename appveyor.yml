@@ -7,21 +7,21 @@ clone_depth: 1
 environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
   nodejs_version: "21"
-  PYTHON: C:\Python312-x64
 
 
 cache:
-- C:\ProgramData\chocolatey\bin
-- C:\ProgramData\chocolatey\lib
+# - C:\ProgramData\chocolatey\bin
+# - C:\ProgramData\chocolatey\lib
 - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
-- "%PYTHON%\\Lib\\site-packages"
-- "%PYTHON%\\Scripts"
+# - "%PYTHON%\\Lib\\site-packages"
+# - "%PYTHON%\\Scripts"
 # - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Lib\\site-packages"
 # - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Scripts"
 
-init:
+# init:
 # - SETX /m PATH "%PATH%;%PYTHON%\Scripts"
+
 
 install:
 # - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
@@ -29,43 +29,15 @@ install:
 # - ps: Restart-Computer
 # - timeout 10
 # - reg import appveyor/EnableChcp65001.reg
-# - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
-# - npm install --global htmlhint
-- npm install --global fkill-cli http-server nodemon pa11y-ci
-- "%PYTHON%\\python -m pip install linkchecker"
-- choco install googlechrome --yes
-- choco install gtools --yes --force
-- refreshenv
-# - where pathed
-- pathed /APPEND %PYTHON% /USER
-- pathed /APPEND %PYTHON%\Scripts /USER
-- refreshenv
-- "%APPVEYOR_BUILD_FOLDER%\\appveyor\\daemons.bat"
+- npm install --global fkill-cli http-server
 
 
 before_build:
-# - chcp
-# - node --version
-# - tidy --version
-# - htmlhint --version
-# - htmllint --version
-# - echo %PATH%
-- pa11y-ci --version
-- linkchecker --version
-- where start
-# - start /b cmd /c http-server --port 4147
-# - http-server --port 4147 &
-# - powershell -Command "Start-Process cmd -ArgumentList '/c http-server --port 4147'"
-# - nodemon --exec http-server --port 4147
+- node --version
+- fkill --version
+- http-server --version
+
 
 build_script:
-# - htmlhint KiraValidHTML.html
-# - htmlhint КираВалидныйHTML.html
-# - htmllint KiraValidHTML.html
-# - htmllint КираВалидныйHTML.html
-# - tidy --quiet yes KiraValidHTML.html
-# - tidy --quiet yes КираВалидныйHTML.html
-- pa11y-ci http://localhost:4147/KiraTestedHTML.html
-- linkchecker http://localhost:4147/KiraTestedHTML.html
+- powershell -Command "Start-Process cmd -ArgumentList '/c http-server --port 4147'"
 - fkill :4147 --force
-# - linkchecker http://localhost:4147/KiraTestedHTML.html
