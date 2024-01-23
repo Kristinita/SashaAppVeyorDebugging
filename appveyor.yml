@@ -40,7 +40,6 @@ install:
 - pathed /APPEND %PYTHON% /USER
 - pathed /APPEND %PYTHON%\Scripts /USER
 - refreshenv
-- "%APPVEYOR_BUILD_FOLDER%\\appveyor\\daemons.bat"
 
 
 before_build:
@@ -57,6 +56,8 @@ before_build:
 # - http-server --port 4147 &
 # - powershell -Command "Start-Process cmd -ArgumentList '/c http-server --port 4147'"
 # - nodemon --exec http-server --port 4147
+# - "%APPVEYOR_BUILD_FOLDER%\\appveyor\\daemons.bat"
+- cmd /c start "" http-server --port 4147
 
 build_script:
 # - htmlhint KiraValidHTML.html
