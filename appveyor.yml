@@ -31,7 +31,7 @@ install:
 # - reg import appveyor/EnableChcp65001.reg
 # - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 # - npm install --global htmlhint
-- npm install --global @axe-core/cli fkill-cli http-server pa11y-ci
+- npm install --global fkill-cli http-server nodemon pa11y-ci
 - "%PYTHON%\\python -m pip install linkchecker"
 - choco install googlechrome --yes
 - choco install gtools --yes --force
@@ -55,7 +55,8 @@ before_build:
 # - "%APPVEYOR_BUILD_FOLDER%\\appveyor\\daemons.bat"
 # - start /b cmd /c http-server --port 4147
 # - http-server --port 4147 &
-- powershell -Command "Start-Process cmd -ArgumentList '/c http-server --port 4147'"
+# - powershell -Command "Start-Process cmd -ArgumentList '/c http-server --port 4147'"
+- nodemon --exec http-server --port 4147
 
 build_script:
 # - htmlhint KiraValidHTML.html
