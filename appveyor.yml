@@ -40,4 +40,4 @@ before_build:
 
 build_script:
 - powershell -Command "Start-Process cmd -ArgumentList '/c http-server --port 4147'"
-- fkill :4147 --force
+- fkill :4147 --force --verbose
