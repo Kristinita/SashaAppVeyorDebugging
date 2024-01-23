@@ -40,6 +40,7 @@ install:
 - pathed /APPEND %PYTHON% /USER
 - pathed /APPEND %PYTHON%\Scripts /USER
 - refreshenv
+- "%APPVEYOR_BUILD_FOLDER%\\appveyor\\daemons.bat"
 
 
 before_build:
@@ -52,7 +53,6 @@ before_build:
 - pa11y-ci --version
 - linkchecker --version
 - where start
-- "%APPVEYOR_BUILD_FOLDER%\\appveyor\\daemons.bat"
 # - start /b cmd /c http-server --port 4147
 # - http-server --port 4147 &
 # - powershell -Command "Start-Process cmd -ArgumentList '/c http-server --port 4147'"

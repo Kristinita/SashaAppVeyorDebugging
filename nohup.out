@@ -1,0 +1,152 @@
+Starting up http-server, serving ./
+
+http-server version: 14.1.1
+
+http-server settings: 
+CORS: disabled
+Cache: 3600 seconds
+Connection Timeout: 120 seconds
+Directory Listings: visible
+AutoIndex: visible
+Serve GZIP Files: false
+Serve Brotli Files: false
+Default File Extension: none
+
+Available on:
+  http://192.168.107.191:4147
+  http://192.168.1.4:4147
+  http://127.0.0.1:4147
+Hit CTRL-C to stop the server
+
+node:events:497
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on Interface instance at:
+    at ReadStream.onerror (node:internal/readline/interface:239:10)
+    at ReadStream.emit (node:events:519:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -4083,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v21.6.0
+Starting up http-server, serving ./
+
+http-server version: 14.1.1
+
+http-server settings: 
+CORS: disabled
+Cache: 3600 seconds
+Connection Timeout: 120 seconds
+Directory Listings: visible
+AutoIndex: visible
+Serve GZIP Files: false
+Serve Brotli Files: false
+Default File Extension: none
+
+Available on:
+  http://192.168.107.191:4147
+  http://192.168.1.4:4147
+  http://127.0.0.1:4147
+Hit CTRL-C to stop the server
+
+node:events:497
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on Interface instance at:
+    at ReadStream.onerror (node:internal/readline/interface:239:10)
+    at ReadStream.emit (node:events:519:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -4083,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v21.6.0
+Starting up http-server, serving ./
+
+http-server version: 14.1.1
+
+http-server settings: 
+CORS: disabled
+Cache: 3600 seconds
+Connection Timeout: 120 seconds
+Directory Listings: visible
+AutoIndex: visible
+Serve GZIP Files: false
+Serve Brotli Files: false
+Default File Extension: none
+
+Available on:
+  http://192.168.107.191:4147
+  http://192.168.1.4:4147
+  http://127.0.0.1:4147
+Hit CTRL-C to stop the server
+
+node:events:497
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on Interface instance at:
+    at ReadStream.onerror (node:internal/readline/interface:239:10)
+    at ReadStream.emit (node:events:519:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -4083,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v21.6.0
+Starting up http-server, serving ./
+
+http-server version: 14.1.1
+
+http-server settings: 
+CORS: disabled
+Cache: 3600 seconds
+Connection Timeout: 120 seconds
+Directory Listings: visible
+AutoIndex: visible
+Serve GZIP Files: false
+Serve Brotli Files: false
+Default File Extension: none
+
+Available on:
+  http://192.168.107.191:4147
+  http://192.168.1.4:4147
+  http://127.0.0.1:4147
+Hit CTRL-C to stop the server
+
+node:events:497
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on Interface instance at:
+    at ReadStream.onerror (node:internal/readline/interface:239:10)
+    at ReadStream.emit (node:events:519:28)
+    at emitErrorNT (node:internal/streams/destroy:169:8)
+    at errorOrDestroy (node:internal/streams/destroy:238:7)
+    at node:internal/fs/streams:272:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:687:5) {
+  errno: -4083,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v21.6.0
