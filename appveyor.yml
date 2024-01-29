@@ -25,40 +25,22 @@ init:
 # - SETX /m PATH "%PATH%;%PYTHON%\Scripts"
 
 install:
-# - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
-# - shutdown /r /t 0
-# - ps: Restart-Computer
-# - timeout 10
-# - reg import appveyor/EnableChcp65001.reg
-# - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
-# - npm install --global htmlhint
 - npm install --global fkill-cli http-server mkcert pa11y-ci
 - "%PYTHON%\\python -m pip install linkchecker"
 - choco install googlechrome --yes
 - choco install gtools --yes --force
 - refreshenv
-# - where pathed
 - pathed /APPEND %PYTHON% /USER
 - pathed /APPEND %PYTHON%\Scripts /USER
 - refreshenv
 
 
 before_build:
-# - chcp
-# - node --version
-# - tidy --version
-# - htmlhint --version
-# - htmllint --version
-# - echo %PATH%
+- node --version
 - pa11y-ci --version
 - linkchecker --version
 - mkcert --version
 - http-server --version
-# - where nohup
-# - nohup --version
-# - where start
-# - start /b cmd /c http-server --port 4147
-# - http-server --port 4147 &
 - mkcert create-ca --validity 9999
 - mkcert create-cert --validity 9999
 - >
@@ -68,19 +50,8 @@ before_build:
   --key cert.key
   --port 4147
   --tls'"
-# - nodemon --exec http-server --port 4147
-# - "%APPVEYOR_BUILD_FOLDER%\\appveyor\\daemons.bat"
-# - cmd /c start "" http-server --port 4147
-# - nohup http-server --port 4147 &
 
 build_script:
-# - htmlhint KiraValidHTML.html
-# - htmlhint КираВалидныйHTML.html
-# - htmllint KiraValidHTML.html
-# - htmllint КираВалидныйHTML.html
-# - tidy --quiet yes KiraValidHTML.html
-# - tidy --quiet yes КираВалидныйHTML.html
-- pa11y-ci https://localhost:4147/KiraTestedHTML.html
+- pa11y-ci --config .pa11y-ci.js https://localhost:4147/KiraTestedHTML.html
 - linkchecker --config linkcheckerrc https://localhost:4147/KiraTestedHTML.html
 - fkill :4147 --force
-# - linkchecker http://localhost:4147/KiraTestedHTML.html
