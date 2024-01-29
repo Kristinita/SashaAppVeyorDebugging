@@ -25,7 +25,7 @@ init:
 # - SETX /m PATH "%PATH%;%PYTHON%\Scripts"
 
 install:
-- npm install --global fkill-cli http-server mkcert pa11y-ci
+- npm install --global check-pages-cli fkill-cli http-server mkcert pa11y-ci
 - "%PYTHON%\\python -m pip install linkchecker"
 - choco install googlechrome --yes
 - choco install gtools --yes --force
@@ -36,13 +36,17 @@ install:
 
 
 before_build:
-- node --version
-- pa11y-ci --version
+- check-pages --version
+- http-server --version
 - linkchecker --version
 - mkcert --version
-- http-server --version
+- node --version
+- pa11y-ci --version
 - mkcert create-ca --validity 9999
 - mkcert create-cert --validity 9999
+
+
+build_script:
 - >
   powershell -Command "Start-Process cmd
   -ArgumentList '/c http-server
@@ -50,8 +54,7 @@ before_build:
   --key cert.key
   --port 4147
   --tls'"
-
-build_script:
-- pa11y-ci --config .pa11y-ci.js https://localhost:4147/KiraTestedHTML.html
+- check-pages https://localhost:4147/KiraTestedHTML.html
 - linkchecker --config linkcheckerrc https://localhost:4147/KiraTestedHTML.html
+- pa11y-ci --config .pa11y-ci.js https://localhost:4147/KiraTestedHTML.html
 - fkill :4147 --force

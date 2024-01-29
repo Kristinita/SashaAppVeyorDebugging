@@ -1,7 +1,9 @@
 module.exports = {
 	defaults: {
 		chromeLaunchConfig: {
-			"ignoreHTTPSErrors": true
+			"args": [
+				"--ignore-certificate-errors"
+				]
 		}
 	}
 };
