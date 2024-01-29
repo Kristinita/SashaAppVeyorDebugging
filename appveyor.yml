@@ -7,7 +7,7 @@ clone_depth: 1
 environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
   # nodejs_version: "21"
-  PATH: "%PYTHON%;%PYTHON%\\Scripts;$(PATH)"
+  # PATH: "%PYTHON%;%PYTHON%\\Scripts;$(PATH)"
   PYTHON: C:\Python312-x64
 
 
@@ -27,7 +27,7 @@ cache:
 
 install:
 # - npm install --global check-pages-cli fkill-cli http-server mkcert pa11y-ci
-- pip install linkchecker"
+- pip install linkchecker
 # - choco install googlechrome --yes
 # - choco install gtools --yes --force
 # - refreshenv
