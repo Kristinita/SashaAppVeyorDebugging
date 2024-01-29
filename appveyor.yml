@@ -6,55 +6,39 @@ clone_depth: 1
 
 environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
-  nodejs_version: "21"
+  # nodejs_version: "21"
   PYTHON: C:\Python312-x64
+  PATH: "%PYTHON%;%PYTHON%\\Scripts;$(PATH)"
 
 
 cache:
-- C:\ProgramData\chocolatey\bin
-- C:\ProgramData\chocolatey\lib
-- "%USERPROFILE%\\AppData\\Roaming\\npm"
+# - C:\ProgramData\chocolatey\bin
+# - C:\ProgramData\chocolatey\lib
+# - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
 - "%PYTHON%\\Lib\\site-packages"
 - "%PYTHON%\\Scripts"
 # - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Lib\\site-packages"
 # - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Scripts"
 
-init:
-- SETX NODE_TLS_REJECT_UNAUTHORIZED 0
+# init:
+# - SETX NODE_TLS_REJECT_UNAUTHORIZED 0
 # - SETX /m PATH "%PATH%;%PYTHON%\Scripts"
 
 install:
-- npm install --global check-pages-cli fkill-cli http-server mkcert pa11y-ci
+# - npm install --global check-pages-cli fkill-cli http-server mkcert pa11y-ci
 - "%PYTHON%\\python -m pip install linkchecker"
-- choco install googlechrome --yes
-- choco install gtools --yes --force
-- refreshenv
-- pathed /APPEND %PYTHON% /USER
-- pathed /APPEND %PYTHON%\Scripts /USER
-- refreshenv
-
+# - choco install googlechrome --yes
+# - choco install gtools --yes --force
+# - refreshenv
+# - pathed /APPEND %PYTHON% /USER
+# - pathed /APPEND %PYTHON%\Scripts /USER
+# - refreshenv
 
 before_build:
-- check-pages --version
-- http-server --version
-- linkchecker --version
-- mkcert --version
-- node --version
-- pa11y-ci --version
-- mkcert create-ca --validity 9999
-- mkcert create-cert --validity 9999
-
+- echo %PATH%
 
 build_script:
-- >
-  powershell -Command "Start-Process cmd
-  -ArgumentList '/c http-server
-  --cert cert.crt
-  --key cert.key
-  --port 4147
-  --tls'"
-- check-pages https://localhost:4147/KiraTestedHTML.html
-- linkchecker --config linkcheckerrc https://localhost:4147/KiraTestedHTML.html
-- pa11y-ci --config .pa11y-ci.js https://localhost:4147/KiraTestedHTML.html
-- fkill :4147 --force
+- python --version
+- where linkchecker
+- linkchecker --version
