@@ -55,6 +55,10 @@ __pycache__/
 # C extensions
 *.so
 
+# SSL keys
+*.crt
+*.key
+
 # Distribution / packaging
 .Python
 build/

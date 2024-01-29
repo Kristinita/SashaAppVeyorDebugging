@@ -31,7 +31,7 @@ install:
 # - reg import appveyor/EnableChcp65001.reg
 # - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 # - npm install --global htmlhint
-- npm install --global fkill-cli http-server nodemon pa11y-ci
+- npm install --global fkill-cli http-server mkcert pa11y-ci
 - "%PYTHON%\\python -m pip install linkchecker"
 - choco install googlechrome --yes
 - choco install gtools --yes --force
@@ -53,14 +53,23 @@ before_build:
 - linkchecker --version
 - where nohup
 - nohup --version
+- mkcert --version
 # - where start
 # - start /b cmd /c http-server --port 4147
 # - http-server --port 4147 &
-# - powershell -Command "Start-Process cmd -ArgumentList '/c http-server --port 4147'"
+- mkcert create-ca --validity 9999
+- mkcert create-cert --validity 9999
+- >
+  powershell -Command "Start-Process cmd
+  -ArgumentList '/c http-server
+  --cert cert.crt
+  --key cert.key
+  --port 4147
+  --tls'"
 # - nodemon --exec http-server --port 4147
 # - "%APPVEYOR_BUILD_FOLDER%\\appveyor\\daemons.bat"
 # - cmd /c start "" http-server --port 4147
-- nohup http-server --port 4147 &
+# - nohup http-server --port 4147 &
 
 build_script:
 # - htmlhint KiraValidHTML.html
@@ -69,7 +78,7 @@ build_script:
 # - htmllint КираВалидныйHTML.html
 # - tidy --quiet yes KiraValidHTML.html
 # - tidy --quiet yes КираВалидныйHTML.html
-- pa11y-ci http://localhost:4147/KiraTestedHTML.html
-- linkchecker http://localhost:4147/KiraTestedHTML.html
+- pa11y-ci https://localhost:4147/KiraTestedHTML.html
+- linkchecker https://localhost:4147/KiraTestedHTML.html
 - fkill :4147 --force
 # - linkchecker http://localhost:4147/KiraTestedHTML.html
