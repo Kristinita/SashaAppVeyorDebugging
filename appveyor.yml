@@ -21,6 +21,7 @@ cache:
 # - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Scripts"
 
 init:
+- SETX NODE_TLS_REJECT_UNAUTHORIZED 0
 # - SETX /m PATH "%PATH%;%PYTHON%\Scripts"
 
 install:
@@ -51,9 +52,10 @@ before_build:
 # - echo %PATH%
 - pa11y-ci --version
 - linkchecker --version
-- where nohup
-- nohup --version
 - mkcert --version
+- http-server --version
+# - where nohup
+# - nohup --version
 # - where start
 # - start /b cmd /c http-server --port 4147
 # - http-server --port 4147 &
@@ -79,6 +81,6 @@ build_script:
 # - tidy --quiet yes KiraValidHTML.html
 # - tidy --quiet yes КираВалидныйHTML.html
 - pa11y-ci https://localhost:4147/KiraTestedHTML.html
-- linkchecker https://localhost:4147/KiraTestedHTML.html
+- linkchecker --config linkcheckerrc https://localhost:4147/KiraTestedHTML.html
 - fkill :4147 --force
 # - linkchecker http://localhost:4147/KiraTestedHTML.html
