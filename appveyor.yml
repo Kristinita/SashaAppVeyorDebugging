@@ -8,7 +8,7 @@ environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
   # NODE_TLS_REJECT_UNAUTHORIZED: 0
   # nodejs_version: "21"
-  PATH: "%PYTHON%;%PYTHON%\\Scripts;C:\\Program Files\\gnuplot\\bin;$(PATH)"
+  # PATH: "%PYTHON%;%PYTHON%\\Scripts;C:\\Program Files\\gnuplot\\bin;$(PATH)"
   PYTHON: C:\Python312-x64
 
 
@@ -27,22 +27,28 @@ cache:
 # - SETX /m PATH "%PATH%;%PYTHON%\Scripts"
 
 install:
-# - npm install --global check-pages-cli fkill-cli http-server mkcert pa11y-ci
+- echo %PATH%
+- choco install --yes gtools
+- refreshenv
+- pathed /APPEND %PYTHON% /USER
+- pathed /APPEND %PYTHON%\Scripts /USER
+- choco install --yes gnuplot
+- echo %PATH%
+- refreshenv
 - pip install linkchecker
+# - npm install --global check-pages-cli fkill-cli http-server mkcert pa11y-ci
 # - choco install googlechrome --yes
 # - choco install gtools --yes --force
 # - refreshenv
 # - pathed /APPEND %PYTHON% /USER
 # - pathed /APPEND %PYTHON%\Scripts /USER
 # - refreshenv
-- echo %PATH%
-- choco install --yes gnuplot
 # - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
 # - shutdown /r /t 0
 
-before_build:
+# before_build:
 # - echo %NODE_TLS_REJECT_UNAUTHORIZED%
-- echo %PATH%
+# - echo %PATH%
 # - refreshenv
 # - echo %PATH%
 
