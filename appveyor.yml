@@ -28,6 +28,7 @@ install:
 - npm install --global check-pages-cli fkill-cli http-server mkcert pa11y-ci
 - pip install linkchecker
 - choco install googlechrome --yes
+- refreshenv
 
 before_build:
 - check-pages --version
