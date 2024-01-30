@@ -38,6 +38,7 @@ before_build:
 - pa11y-ci --version
 - mkcert create-ca --validity 9999
 - mkcert create-cert --validity 9999
+- echo %NODE_TLS_REJECT_UNAUTHORIZED%
 
 build_script:
 - >
