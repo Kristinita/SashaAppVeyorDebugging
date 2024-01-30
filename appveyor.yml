@@ -7,8 +7,8 @@ clone_depth: 1
 environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
   nodejs_version: "21"
+  PATH: "%PYTHON%;%PYTHON%\\Scripts;$(PATH)"
   PYTHON: C:\Python312-x64
-
 
 cache:
 - C:\ProgramData\chocolatey\bin
@@ -26,14 +26,8 @@ init:
 
 install:
 - npm install --global check-pages-cli fkill-cli http-server mkcert pa11y-ci
-- "%PYTHON%\\python -m pip install linkchecker"
+- pip install linkchecker
 - choco install googlechrome --yes
-- choco install gtools --yes --force
-- refreshenv
-- pathed /APPEND %PYTHON% /USER
-- pathed /APPEND %PYTHON%\Scripts /USER
-- refreshenv
-
 
 before_build:
 - check-pages --version
@@ -44,7 +38,6 @@ before_build:
 - pa11y-ci --version
 - mkcert create-ca --validity 9999
 - mkcert create-cert --validity 9999
-
 
 build_script:
 - >
