@@ -27,7 +27,7 @@ cache:
 
 install:
 - echo %PATH%
-- choco install --yes gtools
+- choco install --yes --force gtools
 - refreshenv
 - pathed /ADD %PYTHON% /MACHINE
 - pathed /ADD %PYTHON%\Scripts /MACHINE
