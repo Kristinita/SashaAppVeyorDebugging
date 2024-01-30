@@ -44,6 +44,8 @@ before_build:
 - echo %PATH%
 
 build_script:
+- where gm
+- gm --version
 - where python
 - python --version
 - where pip
