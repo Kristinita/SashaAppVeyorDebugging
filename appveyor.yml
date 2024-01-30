@@ -36,7 +36,7 @@ install:
 # - pathed /APPEND %PYTHON%\Scripts /USER
 # - refreshenv
 - echo %PATH%
-- choco install graphicsmagick --yes
+- choco install gnuplot --yes
 
 before_build:
 - echo %NODE_TLS_REJECT_UNAUTHORIZED%
@@ -44,8 +44,8 @@ before_build:
 - echo %PATH%
 
 build_script:
-- where gm
-- gm --version
+- where gnuplot
+- gnuplot --version
 - where python
 - python --version
 - where pip
