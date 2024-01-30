@@ -13,8 +13,8 @@ environment:
 
 
 cache:
-# - C:\ProgramData\chocolatey\bin
-# - C:\ProgramData\chocolatey\lib
+- C:\ProgramData\chocolatey\bin
+- C:\ProgramData\chocolatey\lib
 # - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
 - "%PYTHON%\\Lib\\site-packages"
@@ -43,9 +43,9 @@ install:
 # - pathed /APPEND %PYTHON% /USER
 # - pathed /APPEND %PYTHON%\Scripts /USER
 # - refreshenv
-- reg import appveyor/EnableUnicodeUTF8Worldwide.reg
-- shutdown /r /t 0
-- echo %PATH%
+# - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
+# - shutdown /r /t 0
+# - echo %PATH%
 
 # before_build:
 # - echo %NODE_TLS_REJECT_UNAUTHORIZED%
