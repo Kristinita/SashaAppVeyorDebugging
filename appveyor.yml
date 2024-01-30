@@ -36,7 +36,7 @@ install:
 # - pathed /APPEND %PYTHON%\Scripts /USER
 # - refreshenv
 - echo %PATH%
-- choco install openvpn --yes
+- choco install graphicsmagick --yes
 
 before_build:
 - echo %NODE_TLS_REJECT_UNAUTHORIZED%
