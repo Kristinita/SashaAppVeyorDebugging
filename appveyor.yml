@@ -8,7 +8,7 @@ environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
   # NODE_TLS_REJECT_UNAUTHORIZED: 0
   # nodejs_version: "21"
-  PATH: "%PYTHON%;%PYTHON%\\Scripts;$(PATH)"
+  PATH: "%PYTHON%;%PYTHON%\\Scripts;C:\\Program Files\\gnuplot\\bin;$(PATH)"
   PYTHON: C:\Python312-x64
 
 
@@ -36,9 +36,9 @@ install:
 # - pathed /APPEND %PYTHON%\Scripts /USER
 # - refreshenv
 - echo %PATH%
-# - choco install gnuplot --yes
-- reg import appveyor/EnableUnicodeUTF8Worldwide.reg
-- shutdown /r /t 0
+- choco install --yes gnuplot
+# - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
+# - shutdown /r /t 0
 
 before_build:
 # - echo %NODE_TLS_REJECT_UNAUTHORIZED%
@@ -47,8 +47,8 @@ before_build:
 # - echo %PATH%
 
 build_script:
-# - where gnuplot
-# - gnuplot --version
+- where gnuplot
+- gnuplot --version
 - where python
 - python --version
 - where pip
