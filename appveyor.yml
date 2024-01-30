@@ -6,7 +6,7 @@ clone_depth: 1
 
 environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
-  NODE_TLS_REJECT_UNAUTHORIZED: 0
+  # NODE_TLS_REJECT_UNAUTHORIZED: 0
   # nodejs_version: "21"
   PATH: "%PYTHON%;%PYTHON%\\Scripts;$(PATH)"
   PYTHON: C:\Python312-x64
@@ -39,8 +39,9 @@ install:
 - choco install gnuplot --yes
 
 before_build:
-- echo %NODE_TLS_REJECT_UNAUTHORIZED%
-# - refreshenv
+# - echo %NODE_TLS_REJECT_UNAUTHORIZED%
+- echo %PATH%
+- refreshenv
 - echo %PATH%
 
 build_script:
