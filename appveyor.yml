@@ -12,8 +12,8 @@ environment:
 
 
 cache:
-- C:\ProgramData\chocolatey\bin
-- C:\ProgramData\chocolatey\lib
+# - C:\ProgramData\chocolatey\bin
+# - C:\ProgramData\chocolatey\lib
 # - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
 - "%PYTHON%\\Lib\\site-packages"
@@ -27,7 +27,7 @@ cache:
 
 install:
 - echo %PATH%
-- choco install --yes --force gtools
+- choco install --yes gtools
 - refreshenv
 - pathed /ADD %PYTHON% /MACHINE
 - pathed /ADD %PYTHON%\Scripts /MACHINE
