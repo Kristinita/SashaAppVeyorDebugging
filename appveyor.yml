@@ -30,8 +30,8 @@ install:
 - echo %PATH%
 - choco install --yes gtools
 - refreshenv
-- pathed /ADD %PYTHON% /USER
-- pathed /ADD %PYTHON%\Scripts /USER
+- pathed /ADD /MACHINE %PYTHON%
+- pathed /ADD /MACHINE %PYTHON%\Scripts
 - choco install --yes gnuplot
 - refreshenv
 - echo %PATH%
