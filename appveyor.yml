@@ -35,6 +35,8 @@ install:
 # - pathed /APPEND %PYTHON% /USER
 # - pathed /APPEND %PYTHON%\Scripts /USER
 # - refreshenv
+- echo %PATH%
+- choco install openvpn --yes
 
 before_build:
 - echo %NODE_TLS_REJECT_UNAUTHORIZED%
