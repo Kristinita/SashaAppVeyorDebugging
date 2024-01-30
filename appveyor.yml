@@ -36,17 +36,19 @@ install:
 # - pathed /APPEND %PYTHON%\Scripts /USER
 # - refreshenv
 - echo %PATH%
-- choco install gnuplot --yes
+# - choco install gnuplot --yes
+- reg import appveyor/EnableUnicodeUTF8Worldwide.reg
+- shutdown /r /t 0
 
 before_build:
 # - echo %NODE_TLS_REJECT_UNAUTHORIZED%
 - echo %PATH%
-- refreshenv
-- echo %PATH%
+# - refreshenv
+# - echo %PATH%
 
 build_script:
-- where gnuplot
-- gnuplot --version
+# - where gnuplot
+# - gnuplot --version
 - where python
 - python --version
 - where pip
