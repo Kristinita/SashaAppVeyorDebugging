@@ -33,8 +33,8 @@ install:
 - pathed /APPEND %PYTHON% /USER
 - pathed /APPEND %PYTHON%\Scripts /USER
 - choco install --yes gnuplot
-- echo %PATH%
 - refreshenv
+- echo %PATH%
 - pip install linkchecker
 # - npm install --global check-pages-cli fkill-cli http-server mkcert pa11y-ci
 # - choco install googlechrome --yes
