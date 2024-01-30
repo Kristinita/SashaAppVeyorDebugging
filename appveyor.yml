@@ -7,7 +7,7 @@ clone_depth: 1
 environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
   # nodejs_version: "21"
-  # PATH: "%PYTHON%;%PYTHON%\\Scripts;$(PATH)"
+  PATH: "%PYTHON%;%PYTHON%\\Scripts;$(PATH)"
   PYTHON: C:\Python312-x64
 
 
@@ -36,6 +36,8 @@ install:
 # - refreshenv
 
 before_build:
+- echo %PATH%
+- refreshenv
 - echo %PATH%
 
 build_script:
