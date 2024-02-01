@@ -2,20 +2,42 @@ platform: x64
 
 image: Visual Studio 2022
 
+clone_depth: 1
+
 environment:
-  PYTHON: C:\Python310-x64
+  PYTHON: C:\Python312-x64
+
+cache:
+# - C:\ProgramData\chocolatey\bin
+# - C:\ProgramData\chocolatey\lib
+# - "%USERPROFILE%\\AppData\\Roaming\\npm"
+# - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
+- "%PYTHON%\\Lib\\site-packages"
+- "%PYTHON%\\Scripts"
+- "%APPVEYOR_BUILD_FOLDER%\\.venv\\Lib\\site-packages"
+- "%APPVEYOR_BUILD_FOLDER%\\.venv\\Scripts"
 
 init:
 - SETX PIPENV_IGNORE_VIRTUALENVS 1
 - SETX PIPENV_VENV_IN_PROJECT 1
 - SETX PIPENV_SKIP_LOCK 1
 - SETX PYTHONIOENCODING utf-8
-- "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+# - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
 install:
-- "%PYTHON%\\python -m pip install --upgrade pip"
-- "%PYTHON%\\python -m pip install pipenv"
+- choco install --yes gtools
+- refreshenv
+- pathed /MACHINE /ADD %PYTHON%
+- pathed /MACHINE /ADD %PYTHON%\Scripts
+- pip install pipenv
 - pipenv install --dev --verbose
+
+before_build:
+- where python
+- python --version
+- where pip
+- pip --version
+- where pipenv
 
 build_script:
 - pipenv --version
