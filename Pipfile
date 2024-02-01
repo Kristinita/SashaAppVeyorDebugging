@@ -1,9 +1,9 @@
 [dev-packages]
+bashate = "*"
 pelican = "*"
 pymdown-extensions = "*"
 pip-review = "*"
 pip-licenses = "*"
-bashate = "*"
 "ruamel.yaml" = "*"
 peru = "*"
 pylint = "*"
