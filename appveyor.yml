@@ -27,9 +27,9 @@ init:
 # - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
 install:
-# - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
-# - shutdown /r /t 0
-# - reg import appveyor/EnableChcp65001.reg
+- reg import appveyor/EnableUnicodeUTF8Worldwide.reg
+- shutdown /r /t 0
+- reg import appveyor/EnableChcp65001.reg
 - choco install --yes gtools
 - refreshenv
 - pathed /MACHINE /ADD %PYTHON%
