@@ -13,7 +13,7 @@ cache:
 # - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
 - "%LocalAppData%\\pip\\cache"
-- "%LocalAppData%\\pipenv\\cache"
+- "%LocalAppData%\\pipenv\\pipenv\\cache"
 
 init:
 # [REQUIRED] “true”, not “1”
