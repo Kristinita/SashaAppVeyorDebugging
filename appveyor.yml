@@ -8,12 +8,13 @@ environment:
   PYTHON: C:\Python312-x64
 
 cache:
+- "%LOCALAPPDATA%\\Temp\\chocolatey"
 # - C:\ProgramData\chocolatey\bin
 # - C:\ProgramData\chocolatey\lib
 # - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
-- "%LocalAppData%\\pip\\cache"
-- "%LocalAppData%\\pipenv\\pipenv\\cache"
+# - "%LocalAppData%\\pip\\cache"
+# - "%LocalAppData%\\pipenv\\pipenv\\cache"
 
 init:
 # [REQUIRED] “true”, not “1”
@@ -28,20 +29,22 @@ install:
 # - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
 # - shutdown /r /t 0
 # - reg import appveyor/EnableChcp65001.reg
-- choco install --yes gtools
-- refreshenv
-- pathed /MACHINE /ADD %PYTHON%
-- pathed /MACHINE /ADD %PYTHON%\Scripts
-- refreshenv
-- pip install pipenv
-- pipenv install --dev --verbose
+# - choco install --yes gtools
+# - refreshenv
+# - pathed /MACHINE /ADD %PYTHON%
+# - pathed /MACHINE /ADD %PYTHON%\Scripts
+# - refreshenv
+- choco install --yes chocolatey.config
+# - pipenv install --dev --verbose
 
 before_build:
-- where python
-- python --version
-- where pip
-- pip --version
-- where pipenv
+- where fd
+- fd --version
+- where node
+- node --version
+- where tidy
+- tidy --version
+- where shellcheck
 
 build_script:
-- pipenv --version
+- chellcheck --version
