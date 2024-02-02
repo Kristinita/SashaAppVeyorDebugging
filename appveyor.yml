@@ -36,7 +36,7 @@ install:
 - pathed /MACHINE /ADD %PYTHON%
 - pathed /MACHINE /ADD %PYTHON%\Scripts
 - refreshenv
-- pip install pipenv peru
+- pip install peru
 # - choco install --yes chocolatey.config
 # - pipenv install --dev --verbose
 
@@ -47,10 +47,10 @@ before_build:
 # - node --version
 # - where tidy
 # - tidy --version
-- where pipenv
+# - where pipenv
 - where peru
 
 build_script:
-- pipenv --version
 - peru --version
 - peru sync
+- ls pelican-plugins
