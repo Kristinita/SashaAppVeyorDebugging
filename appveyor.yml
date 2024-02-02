@@ -13,30 +13,31 @@ cache:
 # - C:\ProgramData\chocolatey\lib
 # - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
-- "%LOCALAPPDATA%\\pip\\cache"
+# - "%LOCALAPPDATA%\\pip\\cache"
 # - "%LOCALAPPDATA%\\pipenv\\pipenv\\cache"
-- "%APPVEYOR_BUILD_FOLDER%\\.peru\\cache"
+# - "%APPVEYOR_BUILD_FOLDER%\\.peru\\cache"
+- "%LOCALAPPDATA%\\npm-cache"
 
 init:
-# [REQUIRED] “true”, not “1”
 - SETX APPVEYOR_SAVE_CACHE_ON_ERROR true
-- SETX PIPENV_IGNORE_VIRTUALENVS 1
-- SETX PIPENV_VENV_IN_PROJECT 1
-- SETX PIPENV_SKIP_LOCK 1
+# - SETX PIPENV_IGNORE_VIRTUALENVS 1
+# - SETX PIPENV_VENV_IN_PROJECT 1
+# - SETX PIPENV_SKIP_LOCK 1
 # - SETX PYTHONIOENCODING utf-8
 # - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
 install:
-- reg import appveyor/EnableUnicodeUTF8Worldwide.reg
-- shutdown /r /t 0
-- reg import appveyor/EnableChcp65001.reg
-- choco install --yes gtools
+# - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
+# - shutdown /r /t 0
+# - reg import appveyor/EnableChcp65001.reg
+- choco install --yes nodejs
 # - choco upgrade --yes chocolatey
-- refreshenv
-- pathed /MACHINE /ADD %PYTHON%
-- pathed /MACHINE /ADD %PYTHON%\Scripts
-- refreshenv
-- pip install peru
+# - refreshenv
+# - pathed /MACHINE /ADD %PYTHON%
+# - pathed /MACHINE /ADD %PYTHON%\Scripts
+# - refreshenv
+- npm install --global --verbose grunt-cli
+- npm install --verbose
 # - choco install --yes chocolatey.config
 # - pipenv install --dev --verbose
 
@@ -48,9 +49,13 @@ before_build:
 # - where tidy
 # - tidy --version
 # - where pipenv
-- where peru
+- where node
+- where npm
+- where npx
+- where grunt
 
 build_script:
-- peru --version
-- peru sync
-- ls pelican-plugins
+- node --version
+- npm --version
+- npx --version
+- grunt --version
