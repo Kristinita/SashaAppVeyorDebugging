@@ -47,4 +47,4 @@ before_build:
 - where shellcheck
 
 build_script:
-- chellcheck --version
+- shellcheck --version
