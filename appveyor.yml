@@ -8,20 +8,21 @@ environment:
   PYTHON: C:\Python312-x64
 
 cache:
-- "%LOCALAPPDATA%\\Temp\\chocolatey"
+# - "%LOCALAPPDATA%\\Temp\\chocolatey"
 # - C:\ProgramData\chocolatey\bin
 # - C:\ProgramData\chocolatey\lib
 # - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
-# - "%LocalAppData%\\pip\\cache"
-# - "%LocalAppData%\\pipenv\\pipenv\\cache"
+- "%LOCALAPPDATA%\\pip\\cache"
+- "%LOCALAPPDATA%\\pipenv\\pipenv\\cache"
+- "%APPVEYOR_BUILD_FOLDER%\\.peru\\cache"
 
 init:
 # [REQUIRED] “true”, not “1”
 - SETX APPVEYOR_SAVE_CACHE_ON_ERROR true
-# - SETX PIPENV_IGNORE_VIRTUALENVS 1
-# - SETX PIPENV_VENV_IN_PROJECT 1
-# - SETX PIPENV_SKIP_LOCK 1
+- SETX PIPENV_IGNORE_VIRTUALENVS 1
+- SETX PIPENV_VENV_IN_PROJECT 1
+- SETX PIPENV_SKIP_LOCK 1
 # - SETX PYTHONIOENCODING utf-8
 # - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
@@ -29,23 +30,27 @@ install:
 # - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
 # - shutdown /r /t 0
 # - reg import appveyor/EnableChcp65001.reg
-# - choco install --yes gtools
-- choco upgrade --yes chocolatey
+- choco install --yes gtools
+# - choco upgrade --yes chocolatey
 - refreshenv
-# - pathed /MACHINE /ADD %PYTHON%
-# - pathed /MACHINE /ADD %PYTHON%\Scripts
-# - refreshenv
-- choco install --yes chocolatey.config
+- pathed /MACHINE /ADD %PYTHON%
+- pathed /MACHINE /ADD %PYTHON%\Scripts
+- refreshenv
+- pip install pipenv peru
+# - choco install --yes chocolatey.config
 # - pipenv install --dev --verbose
 
 before_build:
-- where fd
-- fd --version
-- where node
-- node --version
-- where tidy
-- tidy --version
-- where shellcheck
+# - where fd
+# - fd --version
+# - where node
+# - node --version
+# - where tidy
+# - tidy --version
+- where pipenv
+- where peru
 
 build_script:
-- shellcheck --version
+- pipenv --version
+- peru --version
+- peru sync
