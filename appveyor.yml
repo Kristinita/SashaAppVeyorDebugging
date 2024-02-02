@@ -18,10 +18,10 @@ cache:
 init:
 # [REQUIRED] “true”, not “1”
 - SETX APPVEYOR_SAVE_CACHE_ON_ERROR true
-- SETX PIPENV_IGNORE_VIRTUALENVS 1
-- SETX PIPENV_VENV_IN_PROJECT 1
-- SETX PIPENV_SKIP_LOCK 1
-- SETX PYTHONIOENCODING utf-8
+# - SETX PIPENV_IGNORE_VIRTUALENVS 1
+# - SETX PIPENV_VENV_IN_PROJECT 1
+# - SETX PIPENV_SKIP_LOCK 1
+# - SETX PYTHONIOENCODING utf-8
 # - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
 install:
@@ -33,17 +33,15 @@ install:
 - pathed /MACHINE /ADD %PYTHON%
 - pathed /MACHINE /ADD %PYTHON%\Scripts
 - refreshenv
-- python -m pip install --upgrade pip
-# - pip install pipenv
-# - pipenv install --dev --verbose
+- pip install pipenv
+- pipenv install --dev --verbose
 
 before_build:
 - where python
 - python --version
 - where pip
-# - pip --version
-# - where pipenv
+- pip --version
+- where pipenv
 
 build_script:
-# - pipenv --version
-- pip --version
+- pipenv --version
