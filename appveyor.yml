@@ -36,8 +36,8 @@ install:
 # - pathed /MACHINE /ADD %PYTHON%
 # - pathed /MACHINE /ADD %PYTHON%\Scripts
 # - refreshenv
-- npm install --global --verbose grunt-cli
-- npm install --verbose
+- npm install --global grunt-cli
+- npm install
 # - choco install --yes chocolatey.config
 # - pipenv install --dev --verbose
 
