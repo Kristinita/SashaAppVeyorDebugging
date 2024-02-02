@@ -33,7 +33,7 @@ install:
 - pathed /MACHINE /ADD %PYTHON%
 - pathed /MACHINE /ADD %PYTHON%\Scripts
 - refreshenv
-- pip install --upgrade pip
+- python -m pip install --upgrade pip
 # - pip install pipenv
 # - pipenv install --dev --verbose
 
