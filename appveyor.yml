@@ -7,7 +7,7 @@ clone_depth: 1
 environment:
   PYTHON: C:\Python312-x64
 
-cache:
+# cache:
 # - "%LOCALAPPDATA%\\Temp\\chocolatey"
 # - C:\ProgramData\chocolatey\bin
 # - C:\ProgramData\chocolatey\lib
@@ -16,7 +16,7 @@ cache:
 # - "%LOCALAPPDATA%\\pip\\cache"
 # - "%LOCALAPPDATA%\\pipenv\\pipenv\\cache"
 # - "%APPVEYOR_BUILD_FOLDER%\\.peru\\cache"
-- "%LOCALAPPDATA%\\npm-cache"
+# - "%LOCALAPPDATA%\\npm-cache"
 
 init:
 - SETX APPVEYOR_SAVE_CACHE_ON_ERROR true
