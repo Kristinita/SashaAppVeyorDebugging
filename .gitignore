@@ -34,7 +34,7 @@ pelican_cache/
 # 3. Modernizr CI bugs:
 # https://travis-ci.org/Kristinita/KristinitaPelican/jobs/501409924#L340-L342
 Pipfile.lock
-package-lock.json
+# package-lock.json
 
 # Peru cache
 
