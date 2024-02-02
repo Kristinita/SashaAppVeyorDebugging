@@ -20,6 +20,7 @@ cache:
 
 init:
 - SETX APPVEYOR_SAVE_CACHE_ON_ERROR true
+- SETX NODE_NO_WARNINGS 1
 # - SETX PIPENV_IGNORE_VIRTUALENVS 1
 # - SETX PIPENV_SKIP_LOCK 1
 # - SETX PIPENV_VENV_IN_PROJECT 1
@@ -32,7 +33,7 @@ install:
 # - reg import appveyor/EnableChcp65001.reg
 - choco install --yes nodejs
 # - choco upgrade --yes chocolatey
-# - refreshenv
+- refreshenv
 # - pathed /MACHINE /ADD %PYTHON%
 # - pathed /MACHINE /ADD %PYTHON%\Scripts
 # - refreshenv
