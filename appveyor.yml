@@ -37,6 +37,7 @@ install:
 # - pathed /MACHINE /ADD %PYTHON%
 # - pathed /MACHINE /ADD %PYTHON%\Scripts
 # - refreshenv
+- npm config get cache
 - npm install --global grunt-cli
 - npm ci --loglevel=error
 # - choco install --yes chocolatey.config
