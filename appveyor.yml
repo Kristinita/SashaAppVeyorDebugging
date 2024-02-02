@@ -14,7 +14,7 @@ cache:
 # - "%USERPROFILE%\\AppData\\Roaming\\npm"
 # - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
 - "%LOCALAPPDATA%\\pip\\cache"
-- "%LOCALAPPDATA%\\pipenv\\pipenv\\cache"
+# - "%LOCALAPPDATA%\\pipenv\\pipenv\\cache"
 - "%APPVEYOR_BUILD_FOLDER%\\.peru\\cache"
 
 init:

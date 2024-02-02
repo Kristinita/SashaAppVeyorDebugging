@@ -75,8 +75,8 @@ git module just-table:
 
   # [LEARN][PERU] Rename original folder name to required:
   # https://github.com/buildinspace/peru/issues/205#issuecomment-528948901
-  move:
-    pelican_just_table: just_table
+  # move:
+  # pelican_just_table: just_table
 
   # [REQUIRED] Moved, not original folder name here
   # https://github.com/buildinspace/peru/commit/9258b573100c8efc208668741151be621567707b
