@@ -30,8 +30,8 @@ install:
 # - shutdown /r /t 0
 # - reg import appveyor/EnableChcp65001.reg
 # - choco install --yes gtools
-- refreshenv
 - choco upgrade --yes chocolatey
+- refreshenv
 # - pathed /MACHINE /ADD %PYTHON%
 # - pathed /MACHINE /ADD %PYTHON%\Scripts
 # - refreshenv
