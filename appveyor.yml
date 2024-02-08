@@ -6,29 +6,24 @@ clone_depth: 1
 
 environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
-  nodejs_version: "21"
-  PATH: "%PYTHON%;%PYTHON%\\Scripts;$(PATH)"
   PYTHON: C:\Python312-x64
 
 cache:
-- C:\ProgramData\chocolatey\bin
-- C:\ProgramData\chocolatey\lib
-- "%USERPROFILE%\\AppData\\Roaming\\npm"
-# - "%APPVEYOR_BUILD_FOLDER%\\node_modules"
-- "%PYTHON%\\Lib\\site-packages"
-- "%PYTHON%\\Scripts"
-# - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Lib\\site-packages"
-# - "%APPVEYOR_BUILD_FOLDER%\\.venv\\Scripts"
+- "%LOCALAPPDATA%\\npm-cache"
+- "%LOCALAPPDATA%\\pip\\cache"
+# - "%LOCALAPPDATA%\\pipenv\\pipenv\\cache"
 
 init:
 - SETX NODE_TLS_REJECT_UNAUTHORIZED 0
-# - SETX /m PATH "%PATH%;%PYTHON%\Scripts"
 
 install:
+- choco install --yes googlechrome gtools nodejs
+- refreshenv
+- pathed /MACHINE /ADD %PYTHON%
+- pathed /MACHINE /ADD %PYTHON%\Scripts
+- refreshenv
 - npm install --global check-pages-cli fkill-cli http-server mkcert pa11y-ci
 - pip install linkchecker
-- choco install googlechrome --yes
-- refreshenv
 
 before_build:
 - check-pages --version
@@ -36,20 +31,25 @@ before_build:
 - linkchecker --version
 - mkcert --version
 - node --version
+- npm --version
 - pa11y-ci --version
-- mkcert create-ca --validity 9999
-- mkcert create-cert --validity 9999
-- echo %NODE_TLS_REJECT_UNAUTHORIZED%
+- pip --version
+- python --version
+- where node
+- where npm
+- where pip
+- where python
 
 build_script:
+- mkcert create-ca
+- mkcert create-cert
 - >
   powershell -Command "Start-Process cmd
   -ArgumentList '/c http-server
   --cert cert.crt
   --key cert.key
-  --port 4147
   --tls'"
-- check-pages https://localhost:4147/KiraTestedHTML.html
-- linkchecker --config linkcheckerrc https://localhost:4147/KiraTestedHTML.html
-- pa11y-ci --config .pa11y-ci.js https://localhost:4147/KiraTestedHTML.html
-- fkill :4147 --force
+- check-pages https://localhost:8080/KiraTestedHTML.html
+- linkchecker --config linkcheckerrc https://localhost:8080/KiraTestedHTML.html
+- pa11y-ci --config .pa11y-ci.js https://localhost:8080/KiraTestedHTML.html
+- fkill :8080 --force
