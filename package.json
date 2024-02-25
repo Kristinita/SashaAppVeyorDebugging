@@ -1,0 +1,9 @@
+{
+  "name": "sashaappveyordebugging",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@commitlint/cli": "^18.6.1",
+    "@commitlint/config-conventional": "^18.6.2",
+    "simple-git-hooks": "^2.9.0"
+  }
+}
