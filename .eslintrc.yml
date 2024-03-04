@@ -1,0 +1,499 @@
+##########
+# ESLint #
+##########
+# [OVERVIEW] ESLint — JavaScript linter and problems fixer:
+# https://eslint.org/
+#
+# [CONFIGURATION]
+# https://eslint.org/docs/latest/use/configure/
+#
+# [INFO] Shareable ESLint configurations:
+# https://github.com/dustinspecker/awesome-eslint#configs
+#
+# [PLUGINS]
+# https://github.com/dustinspecker/awesome-eslint#plugins
+#
+# [INFO] Specific environments for different JavaScript runtimes, versions, extensions, and frameworks:
+# https://eslint.org/docs/latest/use/configure/language-options
+#
+# [INFO] eslint-plugin-autofix — autofix many ESLint rules:
+# https://github.com/aladdin-add/eslint-plugin/tree/master/packages/autofix
+env:
+
+  # [INFO] Support browser JavaScript global variables.
+  #
+  # If “browser: true”, ESLint, will not throw errors, for example:
+  # “'document' is not defined” for “document.querySelectorAll(".KiraClass")” or
+  # “'console' is not defined” for “console.log("Kira Goddess!")”
+  #
+  # I enable it as my JavaScript files for use in the browser:
+  # https://eslint.org/docs/latest/use/configure/language-options#specifying-environments
+  browser: true
+
+
+# [INFO] Rule sets:
+# https://eslint.org/docs/latest/use/configure/configuration-files#extending-configuration-files
+extends:
+# [INFO] Enable all core rules in the currently installed version of ESLint:
+# https://eslint.org/docs/latest/use/configure/configuration-files#using-eslintall
+- eslint:all
+
+- plugin:unicorn/all
+
+# [INFO] Ignore specific patterns:
+# https://eslint.org/docs/latest/use/configure/ignore
+#
+# [NOTE] “node_modules/” and dot-files ignored by default:
+# https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file
+# https://github.com/eslint/eslint/issues/10341
+#
+# [INFO] Add “!.*” that enable ESLint for dot-files:
+# https://stackoverflow.com/a/71829427/5951529
+ignorePatterns:
+- "!.*"
+
+
+# [INFO] Setting to enable support for non-default ECMAScript versions and JSX
+parserOptions:
+
+  # [INFO] The most recently supported ECMAScript version.
+  # ECMAScript 5 syntax by default:
+  # https://eslint.org/docs/latest/use/configure/language-options#specifying-parser-options
+  ecmaVersion: latest
+
+
+plugins:
+- unicorn
+
+# [INFO] Report unused “eslint-disable” comments:
+# https://eslint.org/docs/latest/use/configure/rules#report-unused-eslint-disable-comments
+reportUnusedDisableDirectives: true
+
+
+# [INFO] Rules list:
+# https://eslint.org/docs/latest/rules/
+#
+# [INFO] “0” — disable rule, “1” — warning, “2” — error:
+# https://eslint.org/docs/latest/use/configure/rules#rule-severities
+#
+# [INFO] Disable ESLint rules:
+# https://eslint.org/docs/latest/use/configure/rules#disabling-rules
+#
+#
+# [REQUIRED] Multiline comments. Single-line comments doesn’t work.
+#
+# [NOTE] Don’t use single-line “eslint-disable-next-line” in CoffeeScript files.
+# After compiling CoffeeScript into JavaScript, the “next line” may be different.
+# Use the syntax:
+#
+# ```coffee
+# ### eslint-disable example-rule ###
+#
+# your code
+#
+# ### eslint-enable example-rule ###
+# ```
+#
+# [NOTE] CoffeeScript can move “### eslint-disable example-rule ###” and “### eslint-enable example-rule ###”
+# comments to the top of the file before variables declaration:
+# https://github.com/jashkenas/coffeescript/issues/5366
+# Check ESLint warnings and move “eslint-disable”/“eslint-enable” comments below some variables if it required.
+#
+#
+# [INFO] Comment descriptions:
+# https://eslint.org/docs/latest/use/configure/rules#comment-descriptions
+#
+# CoffeeScript comments must be in format:
+# ```coffee
+# ### eslint-disable ${eslintrule} --
+#
+# Description
+#
+# ###
+#
+# # eslint-enable ${eslintrule}
+# ```
+#
+#
+# [NOTE] Disable solely rules, that not valid before “eslint --fix”.
+# For example,
+# 1. After compilation CoffeeScript to JavaScript I get “unicorn/no-array-for-each” error.
+# 2. After “eslint --fix” I get “no-continue” error.
+# I need to disable “eslint-disable unicorn/no-array-for-each”.
+# If I disable “eslint-disable no-continue”, “eslint --fix” deletes “eslint-disable” and “eslint-enable” comments
+# and still return “no-continue” error
+#
+#
+# My comments for “rules” key:
+# [INFO] — explanation of the rule
+# [NOTE] — reasons for its rejection
+rules:
+
+  # [INFO] Comments must begin with a capital letter:
+  # https://eslint.org/docs/latest/rules/capitalized-comments
+  #
+  # [NOTE] JavaScript library names can begin with a lowercase letter:
+  # for example, “hes-gallery”, “typo-reporter”.
+  # I can start my comments with the names of these libraries
+  capitalized-comments: 0
+
+  # [INFO] Require “return” statements to either always or never specify values
+  # https://eslint.org/docs/latest/rules/consistent-return
+  #
+  # [INFO] When I use async arrow functions, I get this error with a message:
+  # “Expected to return a value at the end of async arrow function”
+  #
+  # “return” required for the async functions like this:
+  #
+  # ```coffee
+  # kiraRemoveExtraTitleAttribute = (kiraTitledForm) ->
+  #
+  #   kiraObjectTitledForm = await waitForElm(kiraTitledForm)
+  #
+  #   kiraObjectTitledForm.removeAttribute "title"
+  #
+  #   return
+  # ```
+  consistent-return: 2
+
+  # [INFO] Disallow named “function” expressions:
+  # https://eslint.org/docs/latest/rules/func-names
+  func-names: 2
+
+  # [INFO] Enforcing variable initializations during declaration:
+  # https://eslint.org/docs/latest/rules/init-declarations
+  #
+  # [NOTE] CoffeeScript eliminate variable initializations during declaration:
+  # https://stackoverflow.com/a/15044640/5951529
+  init-declarations: 0
+
+  # [INFO] The maximum number of lines allowed for the function. The default value is 50.
+  # https://eslint.org/docs/latest/rules/max-lines-per-function
+  #
+  # [NOTE] I prefer to write detailed comments, and 50 lines may not be enough for me.
+  # I added to the rule ignoring comments and empty lines:
+  # https://eslint.org/docs/latest/rules/max-lines-per-function#options
+  max-lines-per-function:
+  - error
+  - skipBlankLines: true
+    skipComments: true
+
+  # [INFO] Multiline comments in JSDoc style:
+  # https://eslint.org/docs/latest/rules/multiline-comment-style
+  #
+  # [INFO] CoffeeScript JSDoc-compatible comments:
+  # https://stackoverflow.com/a/24348892/5951529
+  #
+  # [NOTE] I don’t use it for 2 reasons:
+  # 1. Extra work for extra slashes
+  # 2. Leading space, incompatible with EditorConfig settings
+  multiline-comment-style: 0
+
+  # [INFO] The “new” operator in JavaScript creates a new instance of a particular type of object.
+  # That type of object is represented by a constructor function.
+  #
+  # Solely names of constructor functions must begin with a capital letter:
+  # https://eslint.org/docs/latest/rules/new-cap
+  new-cap: 2
+
+  # [INFO] Disable JavaScript functions “alert”, “confirm” and “prompt”:
+  # https://eslint.org/docs/latest/rules/no-alert
+  #
+  # [INFO] I use these functions if a user gets an error while interacting with a site
+  # and I prompt them to submit an error message
+  no-alert: 2
+
+  # [INFO] Don’t use console messages as “console.log” and “console.error”:
+  # https://eslint.org/docs/latest/rules/no-console
+  #
+  # [INFO] ESLint recommends ignoring this rule when the information of the methods in the “console” isn’t debugging,
+  # but is suitable for browser users:
+  # https://eslint.org/docs/latest/rules/no-console#when-not-to-use-it
+  no-console: 2
+
+  # [INFO] “no-implicit-globals” — disable declaration global scopes:
+  # https://eslint.org/docs/latest/rules/no-implicit-globals
+  #
+  # [NOTE] CoffeScript intentionally doesn’t support “let” and “const”:
+  # https://coffeescript.org/#unsupported-let-const
+  no-implicit-globals: 0
+
+  # [INFO] Disallow inline comments:
+  # https://eslint.org/docs/latest/rules/no-inline-comments
+  #
+  # [NOTE] Writing comments before code lines in CoffeeScript is a convenient and clear way
+  no-inline-comments: 0
+
+  # [INFO] Use variables instead of numbers.
+  # Users should understand why developer chose this number:
+  # https://eslint.org/docs/latest/rules/no-magic-numbers
+  #
+  # [NOTE] I think this rule is necessary, I use variables instead of numbers directly,
+  # but I can’t enforce it because CoffeeScript doesn’t support “init-declarations”.
+  no-magic-numbers: 0
+
+  # [INFO] Disable shadowing variables. Shadowing is the process by which a local variable
+  # shares the same name as a variable in its containing scope. For example:
+  #
+  # ```js
+  # var a = 3;
+  # function b() {
+  #   var a = 10;
+  # }
+  # ```
+  no-shadow: 2
+
+  # [INFO] “no-var” — use “let” and “const” instead of “var”:
+  # https://eslint.org/docs/latest/rules/no-var
+  #
+  # [NOTE] See “no-implicit-globals” description
+  no-var: 0
+
+  # [INFO] Disallow the use of undeclared variables unless mentioned in “/*global */” comments:
+  # https://eslint.org/docs/latest/rules/no-undef
+  #
+  # [NOTE] I add to my project configuration JavaScript files for third-party scripts.
+  # They use variables that are valid in combination with third-party scripts.
+  no-undef: 0
+
+  # [INFO] Disallow using “undefined” as an identifier:
+  # https://eslint.org/docs/latest/rules/no-undefined
+  #
+  # [NOTE] If I use “null” (default Defer.js operator), I get “unicorn/no-null” error:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-null.md
+  #
+  # Elif I use “undefined”, I get “no-undefined”
+  #
+  # Else I use “void 0”, I get “no-void” error:
+  # https://eslint.org/docs/latest/rules/no-void
+  #
+  # I selected use “undefined” for Defer.js scripts
+  no-undefined: 0
+
+  # [INFO] Disallow unused variables:
+  # https://eslint.org/docs/latest/rules/no-unused-vars
+  #
+  # [NOTE] See note for “no-undef” rule
+  no-unused-vars: 0
+
+  # [INFO] Use cleaner ECMAScript 6 syntax for defining object literals:
+  # https://eslint.org/docs/latest/rules/object-shorthand
+  #
+  # [INFO] No need specific ES6-compatible CoffeeScript syntax for defining object literals.
+  # Use standard syntax, ESLint and plugin prefer-arrow-functions fix unneeded “function” and “return”.
+  #
+  # [EXAMPLE]
+  # ```coffee
+  # kiraCodeBlockClipboard = new Clipboard(".SashaClipboardButton"
+  #   text: (trigger) ->
+  #     trigger.closest(".SashaBlockHighlight").querySelector("pre").textContent.trimEnd()
+  # )
+  #
+  # [AUTOFIX]
+  #
+  # [INPUT]
+  # ```js
+  # kiraCodeBlockClipboard = new Clipboard(".SashaClipboardButton", {
+  # text: function(trigger) {
+  #   return trigger.closest(".SashaBlockHighlight").querySelector("pre").textContent.trimEnd();
+  # }
+  # });
+  # ```
+  #
+  # [OUTPUT]
+  # ```js
+  # kiraCodeBlockClipboard = new Clipboard(".SashaClipboardButton", {
+  #   text: (trigger) => trigger.closest(".SashaBlockHighlight").querySelector("pre").textContent.trimEnd()
+  # });
+  # ```
+  object-shorthand: 2
+
+  # [INFO] Enforcing use destructuring for arrays and objects
+  # instead of accessing a property through a member expression:
+  # https://eslint.org/docs/latest/rules/prefer-destructuring
+  #
+  # ---
+  #
+  # [INFO] I get error “Use array destructuring”, when I wrote:
+  #
+  # ```coffee
+  # SashaBowserFirefox = document.getElementsByClassName("SashaBowserFirefox")[0]
+  # SashaBowserFirefox.innerHTML = "<div>Нажмите <kbd>Shift+Alt+K</kbd> и вводите поисковый запрос</div>"
+  # ```
+  #
+  # Valid:
+  #
+  # ```coffee
+  # document.getElementsByClassName("SashaBowserFirefox")[0].innerHTML = \
+  # "<div>Нажмите <kbd>Shift+Alt+K</kbd> и вводите поисковый запрос</div>"
+  # ```
+  #
+  # ---
+  #
+  # “Use object destructuring”:
+  #
+  # ```coffee
+  # $navbarBurgers = Array::slice.call(document.querySelectorAll(".navbar-burger"), 0)
+  # $navbarBurgers.forEach (kiraElement) ->
+  # ```
+  #
+  # Valid:
+  #
+  # ```coffee
+  # Array::slice.call(document.querySelectorAll(".navbar-burger"), 0).forEach (kiraElement) ->
+  # ```
+  #
+  # ---
+  #
+  # “Use array destructuring”:
+  #
+  # ```coffee
+  # kiraTarget = kiraElement.dataset.target
+  # $target = document.getElementsByClassName(kiraTarget)[0]
+  # $target.classList.toggle "is-active"
+  # ```
+  #
+  # Valid:
+  #
+  # ```coffee
+  # document.getElementsByClassName(kiraElement.dataset.target)[0].classList.toggle "is-active"
+  # ```
+  #
+  # ---
+  #
+  # [INFO] As I understand it, to comply with this rule,
+  # is required concatenation of objects and arrays without declaring unnecessary variables
+  prefer-destructuring: 2
+
+  # [INFO] Enforce the use of u or v flag on RegExp
+  # https://eslint.org/docs/latest/rules/require-unicode-regexp
+  #
+  # [INFO] The RegExp “v” flag, introduced in ECMAScript 2024, is a superset of the “u” flag:
+  # https://v8.dev/features/regexp-v-flag
+  #
+  # [SOON] In December 2023 when using the “v” flag in CoffeeScript
+  # I get an error “invalid regular expressions flag "v"”.
+  # In the coming years, the “v” flag may be fully valid in CoffeeScript
+  require-unicode-regexp: 2
+
+  # [INFO] Require “"use strict";” directive.
+  #
+  # [NOTE] In ECMAScript modules, which always have strict mode semantics, the directives are unnecessary.
+  # https://eslint.org/docs/latest/rules/strict
+  strict: 0
+
+  # [INFO] Enforce using a specific case style for filenames:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/filename-case.md
+  #
+  # [NOTE] Rule enforces using specific case in all linted files include HTML files.
+  #
+  # [FIXME] Possibly, I need this rule with ignoring it for HTML files.
+  # I temporary disable the rule, but in the future maybe enable it.
+  unicorn/filename-case: 0
+
+  # [INFO] Use “for-of” loop instead of method “forEach()”.
+  # According to the Unicorn developers, this is faster, has better readability
+  # and adds the ability to exit with “break” and “return”:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-for-each.md
+  #
+  # [INFO] In CoffeeScript use “for-from”, that compiled to “for-of”.
+  # https://coffeescript.org/#generators
+  # https://stackoverflow.com/a/57637660/5951529
+  #
+  # [NOTE] CoffeeScript compile “for-of” loops to “for-in” loop:
+  # https://coffeescript.org/#loops
+  unicorn/no-array-for-each: 2
+
+  # [INFO] Disallow “null” literal. Use “undefined” instead. “null” is a bad idea:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-null.md
+  # https://github.com/sindresorhus/meta/discussions/7
+  unicorn/no-null: 2
+
+  # [INFO] Use numeric separators for numbers greater than 9999 for better readability:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/numeric-separators-style.md
+  # [EXAMPLE] “140_000”, not “140000”
+  #
+  # [NOTE] JSHint doesn’t support numeric separators:
+  # https://github.com/jshint/jshint/issues/3533
+  unicorn/numeric-separators-style: 2
+
+  # [INFO] Enforce using methods “addEventListener()” and “.removeEventListener()”
+  # over “on”-functions as “onclick” and “onorientationchange”:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-add-event-listener.md
+  #
+  # [INFO] “addEventListener()” has some advantages as registering unlimited event handlers
+  # and optionally having the event handler invoked solely once:
+  # https://stackoverflow.com/a/35093997/5951529
+  unicorn/prefer-add-event-listener: 2
+
+  # [INFO] Prefer using “foo.append(bar);” instead of “foo.appendChild(bar);”:
+  # “There are some advantages of using Node#append(), like the ability to append multiple nodes
+  # and to append both DOMString and DOM node objects.”:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-dom-node-append.md
+  unicorn/prefer-dom-node-append: 2
+
+  # [INFO] Use “dataset” property for custom “data-*” attributes instead of methods
+  # “.getAttribute()”, “.setAttribute()”, “.removeAttribute()” and “.hasAttribute()”:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-dom-node-dataset.md
+  unicorn/prefer-dom-node-dataset: 2
+
+  # [INFO] Use “after()”, “append()”, “before()” or “prepend()” instead of
+  # “.insertBefore()”, “.replaceChild()”, “.replaceWith()”, “insertAdjacentElement()” and “insertAdjacentText()”.
+  # “There are some advantages of using the newer DOM APIs”:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-modern-dom-apis.md
+  unicorn/prefer-modern-dom-apis: 2
+
+  # [INFO] Prefer using “node:” protocol when importing Node.js built-in modules.
+  # It makes it perfectly clear that the package is a Node.js builtin module.
+  # Use “node:child_process” instead of “child_process”:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md
+  unicorn/prefer-node-protocol: 2
+
+  # [INFO] Prefer “.querySelector()” over “.getElementById()”,
+  # “.querySelectorAll()” over “.getElementsByClassName()” and “.getElementsByTagName()”.
+  # “This helps keep consistency and it lends itself to future improvements (e.g. more specific selectors).”:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-query-selector.md
+  unicorn/prefer-query-selector: 2
+
+  # [INFO] Prefer the spread operator “...” over “Array.from()”, “Array#concat()”,
+  # “Array#{slice,toSpliced}()” and “String#split("")”:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-spread.md
+  #
+  # [INFO] Unicorn throws this error if the user uses the method “concat()” for string concatenation.
+  # Use template literals instead of “concat()” for fixing this error:
+  # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+  # https://coderwall.com/p/ocx2ia/template-literals-in-coffeescript
+  #
+  # [EXAMPLE]
+  # Use “kiraQuery = "#{kiraSite}#{kiraURL}"” instead of “kiraQuery = kiraSite.concat(kiraURL)”
+  unicorn/prefer-spread: 2
+
+  # [INFO] Use “slice()” instead of “substr()” and “substring()”. Unicorn developers says:
+  # “String#substr()” and “String#substring()” are the two lesser known legacy ways to slice a string.
+  # It’s better to use “String#slice()” as it’s a more popular option
+  # with clearer behavior that has a consistent Array counterpart.
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-string-slice.md
+  unicorn/prefer-string-slice: 2
+
+  # [INFO] Prefer ternary expressions over “if-else” statements.
+  # 1. Using an “if-else” statement typically results in more lines of code than a single-line ternary expression.
+  # 2. Using an “if-else” statement can result in defining variables
+  # using “let” or “var” solely to be reassigned within the blocks.
+  # This leads to variables being unnecessarily mutable and prevents “prefer-const” from flagging the variable:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-ternary.md
+  #
+  # [NOTE] CoffeeScript doesn’t support JavaScript ternary operator. Use “if-then-else” statements:
+  # https://stackoverflow.com/a/39093085/5951529
+  # https://stackoverflow.com/a/10146123/5951529
+  #
+  # [AUTOFIX] Unicorn automatically replace “if-then-else” to ternary operator
+  unicorn/prefer-ternary: 2
+
+  # [INFO] Using complete words instead of abbreviations in classes, filenames, functions, imports, properties and variables:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prevent-abbreviations.md
+  unicorn/prevent-abbreviations:
+  - error
+  # [NOTE] prevent-abbreviations return errors for non-ASCII HTML filenames.
+  # I couldn’t find how I could ignore name checking for HTML files solely and I disabled name checking for all files:
+  # https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2292
+  - checkFilenames: false
