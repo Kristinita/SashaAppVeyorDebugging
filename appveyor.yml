@@ -13,13 +13,17 @@ platform: x64
 # - "%LOCALAPPDATA%\\pipenv\\pipenv\\cache"
 
 install:
-- choco install --yes fd shellcheck
+- choco install --yes fd git shellcheck
 
 before_build:
 - fd --version
 - shellcheck --version
 - where sh
 - sh --version
+- where echo
+- echo --version
+- where git
+- git --version
 
 build_script:
 - fd --extension sh | xargs --replace=% echo "echo %; shellcheck %" | sh
