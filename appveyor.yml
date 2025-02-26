@@ -1,39 +1,44 @@
-platform: x64
-
-image: Visual Studio 2022
-
-clone_depth: 1
-
-cache:
-- C:\ProgramData\chocolatey\bin
-- C:\ProgramData\chocolatey\lib
-- "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
-# - "%APPVEYOR_BUILD_FOLDER%/node_modules"
-
-environment:
-  nodejs_version: "21"
-
-install:
-- reg import appveyor/EnableUnicodeUTF8Worldwide.reg
-- shutdown /r /t 0
-# - ps: Restart-Computer
-# - timeout 10
-- reg import appveyor/EnableChcp65001.reg
-# - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
-# - npm install --global htmlhint
-- npm install --global htmllint-cli
-
 before_build:
 - chcp
 - node --version
 # - tidy --version
 # - htmlhint --version
-- htmllint --version
+# - htmllint --version
+- pylint --version
 
 build_script:
 # - htmlhint KiraValidHTML.html
 # - htmlhint КираВалидныйHTML.html
-- htmllint KiraValidHTML.html
-- htmllint КираВалидныйHTML.html
+# - htmllint KiraValidHTML.html
+# - htmllint КираВалидныйHTML.html
 # - tidy --quiet yes KiraValidHTML.html
 # - tidy --quiet yes КираВалидныйHTML.html
+- pylint kira_valid_python.py
+
+cache:
+# - C:\ProgramData\chocolatey\bin
+# - C:\ProgramData\chocolatey\lib
+- "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
+# - "%APPVEYOR_BUILD_FOLDER%/node_modules"
+- "%LOCALAPPDATA%\\pip\\cache"
+
+clone_depth: 1
+
+environment:
+  # nodejs_version: "23"
+  PYTHON: C:\Python313-x64
+
+image: Visual Studio 2022
+
+install:
+# - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
+# - shutdown /r /t 0
+# - ps: Restart-Computer
+# - timeout 10
+# - reg import appveyor/EnableChcp65001.reg
+# - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
+# - npm install --global htmlhint
+# - npm install --global htmllint-cli
+- pip install pylint
+
+platform: x64
