@@ -1,32 +1,32 @@
 before_build:
 - chcp
 # - node --version
-- tidy --version
+# - tidy --version
 # - htmlhint --version
-# - htmllint --version
+- htmllint --version
 # - python --version
 
 build_script:
 # - htmlhint KiraValidHTML.html
 # - htmlhint КираВалидныйHTML.html
-# - htmllint KiraValidHTML.html
-# - htmllint КираВалидныйHTML.html
-- tidy --quiet yes KiraValidHTML.html
-- tidy --quiet yes КираВалидныйHTML.html
+- htmllint KiraValidHTML.html
+- htmllint КираВалидныйHTML.html
+# - tidy --quiet yes KiraValidHTML.html
+# - tidy --quiet yes КираВалидныйHTML.html
 # - pylint --enable-all-extensions --rcfile pylintrc.toml --verbose kira_valid_python.py
 # - python kira_peru.py
 # - python kira_cyrillic_python_string.py
 
 cache:
 - "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
-# - "%APPVEYOR_BUILD_FOLDER%/node_modules"
+- "%APPVEYOR_BUILD_FOLDER%/node_modules"
 - "%LOCALAPPDATA%\\pip\\cache"
 
 clone_depth: 1
 
 environment:
-  # nodejs_version: "23"
-  PYTHON: C:\Python312-x64
+  nodejs_version: "23"
+  # PYTHON: C:\Python312-x64
 
 image: Visual Studio 2022
 
@@ -38,9 +38,9 @@ install:
 # - ps: Restart-Computer
 - timeout 60
 # - reg import appveyor/EnableChcp65001.reg
-- choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
+# - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 # - npm install --global htmlhint
-# - npm install --global htmllint-cli
+- npm install --global htmllint-cli
 # - pip install --upgrade pip
 # - pip install pylint
 
