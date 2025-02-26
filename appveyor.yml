@@ -4,7 +4,8 @@ before_build:
 # - tidy --version
 # - htmlhint --version
 # - htmllint --version
-- pylint --version
+- python --version
+# - pylint --version
 
 build_script:
 # - htmlhint KiraValidHTML.html
@@ -13,7 +14,8 @@ build_script:
 # - htmllint КираВалидныйHTML.html
 # - tidy --quiet yes KiraValidHTML.html
 # - tidy --quiet yes КираВалидныйHTML.html
-- pylint --enable-all-extensions --rcfile pylintrc.toml --verbose kira_valid_python.py
+# - pylint --enable-all-extensions --rcfile pylintrc.toml --verbose kira_valid_python.py
+- python kira_peru.py
 
 cache:
 # - C:\ProgramData\chocolatey\bin
@@ -30,7 +32,7 @@ environment:
 
 image: Visual Studio 2022
 
-install:
+# install:
 # - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
 # - shutdown /r /t 0
 # - ps: Restart-Computer
@@ -40,6 +42,6 @@ install:
 # - npm install --global htmlhint
 # - npm install --global htmllint-cli
 # - pip install --upgrade pip
-- pip install pylint
+# - pip install pylint
 
 platform: x64
