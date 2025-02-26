@@ -35,10 +35,11 @@ image: Visual Studio 2022
 
 install:
 - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
-- shutdown /r
-# - shutdown /r /t 0
+- timeout 5
+# - shutdown /r
+- shutdown /r /t 0
 # - ps: Restart-Computer
-- timeout 10
+- timeout 5
 # - reg import appveyor/EnableChcp65001.reg
 # - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
 # - npm install --global htmlhint
