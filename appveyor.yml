@@ -35,7 +35,8 @@ image: Visual Studio 2022
 
 install:
 - reg import appveyor/EnableUnicodeUTF8Worldwide.reg
-- shutdown /r /t 0
+- shutdown /r
+# - shutdown /r /t 0
 # - ps: Restart-Computer
 - timeout 30
 # - reg import appveyor/EnableChcp65001.reg
