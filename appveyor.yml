@@ -2,15 +2,15 @@ before_build:
 - chcp
 # - node --version
 # - tidy --version
-# - htmlhint --version
-- htmllint --version
+- htmlhint --version
+# - htmllint --version
 # - python --version
 
 build_script:
-# - htmlhint KiraValidHTML.html
-# - htmlhint КираВалидныйHTML.html
-- htmllint KiraValidHTML.html
-- htmllint КираВалидныйHTML.html
+- htmlhint KiraValidHTML.html
+- htmlhint КираВалидныйHTML.html
+# - htmllint KiraValidHTML.html
+# - htmllint КираВалидныйHTML.html
 # - tidy --quiet yes KiraValidHTML.html
 # - tidy --quiet yes КираВалидныйHTML.html
 # - pylint --enable-all-extensions --rcfile pylintrc.toml --verbose kira_valid_python.py
@@ -20,7 +20,7 @@ build_script:
 cache:
 - "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
 - "%APPVEYOR_BUILD_FOLDER%/node_modules"
-- "%LOCALAPPDATA%\\pip\\cache"
+# - "%LOCALAPPDATA%\\pip\\cache"
 
 clone_depth: 1
 
@@ -39,8 +39,8 @@ install:
 - timeout 60
 # - reg import appveyor/EnableChcp65001.reg
 # - choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
-# - npm install --global htmlhint
-- npm install --global htmllint-cli
+- npm install --global htmlhint
+# - npm install --global htmllint-cli
 # - pip install --upgrade pip
 # - pip install pylint
 
