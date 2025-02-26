@@ -26,7 +26,7 @@ insert_final_newline = true
 # https://www.npmjs.com/package/eclint#support-for-doc-comments
 # https://www.npmjs.com/package/eclint#block_comment_start
 #
-# [WARNING] Leading spaces doesn't deleted:
+# [WARNING] Leading spaces doesn’t deleted:
 # https://github.com/jedmao/eclint/issues/155
 block_comment_start = /*
 block_comment = *
@@ -60,35 +60,3 @@ indent_style = space
 # https://serverfault.com/a/429598/351829
 [*.bat]
 end_of_line = crlf
-
-
-# [INFO] “.st” is the extension of “search-index.st” —
-# binary subtitles file for the Stork search
-# No need to modify this file and check it against EditorConfig rules.
-#
-# [INFO] Ignore all EditorConfig properties for specific files:
-# https://stackoverflow.com/a/40348831/5951529
-[*.st]
-charset = unset
-end_of_line = unset
-insert_final_newline = unset
-trim_trailing_whitespace = unset
-indent_style = unset
-indent_size = unset
-tab_width = unset
-
-
-# [INFO] eclint will not change third-party folders:
-# https://stackoverflow.com/a/40348831/5951529
-# https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#current-universal-properties
-#
-# [NOTE] Negative eclint glob patterns may doesn’t works as expected:
-# https://github.com/jedmao/eclint#check
-# https://github.com/jedmao/eclint/issues/124
-[pelican-plugins/**]
-charset = unset
-end_of_line = unset
-insert_final_newline = unset
-trim_trailing_whitespace = unset
-indent_style = unset
-indent_size = unset
