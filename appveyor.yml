@@ -3,7 +3,7 @@ before_build:
 - git --version
 
 build_script:
-- git log -1 --pretty="%B"
+- git log -1
 
 # cache:
 # - "%LOCALAPPDATA%\\npm-cache"
@@ -18,9 +18,6 @@ environment:
 image: Visual Studio 2022
 
 install:
-- reg import appveyor/UnicodeUTF8Worldwide.reg
-- shutdown /r
-- timeout 60
 - choco install git --yes
 
 platform: x64
