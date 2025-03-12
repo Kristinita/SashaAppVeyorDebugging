@@ -3,7 +3,7 @@ before_build:
 - git --version
 
 build_script:
-- git log -1 --pretty="format:%B"
+- git log -1 --pretty="%B"
 
 # cache:
 # - "%LOCALAPPDATA%\\npm-cache"
