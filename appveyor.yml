@@ -1,63 +1,23 @@
 before_build:
-- chcp
-- node --version
-- tidy --version
-- htmlhint --version
-- htmllint --version
-- python --version
+- where git
+- git --version
 
 build_script:
-- htmlhint KiraValidHTML.html
-- htmlhint КираВалидныйHTML.html
-- htmllint KiraValidHTML.html
-- htmllint КираВалидныйHTML.html
-- tidy --quiet yes KiraValidHTML.html
-- tidy --quiet yes КираВалидныйHTML.html
-- python kira_peru.py
-- python kira_cyrillic_python_string.py
+- git log -1 --pretty="format:%B"
 
-cache:
-- "%USERPROFILE%\\AppData\\Roaming\\npm\\node_modules"
+# cache:
+# - "%LOCALAPPDATA%\\npm-cache"
+# - "%LOCALAPPDATA%\\pip\\cache"
+# - "%LOCALAPPDATA%\\pipenv\\pipenv\\cache"
 
 clone_depth: 1
 
 environment:
-  nodejs_version: "23"
+  APPVEYOR_SAVE_CACHE_ON_ERROR: true
 
 image: Visual Studio 2022
 
 install:
-# [INFO] Place import of the “.reg” file, “shutdown” and “timeout” commands inside “install”, not “init” section:
-# https://github.com/appveyor/ci/issues/2459#issuecomment-456042331
-- reg import appveyor/UnicodeUTF8Worldwide.reg
-
-# [INFO] “/t” command-line argument — the time until system shutdown in seconds.
-# I use the default value — 30 seconds.
-- shutdown /r
-
-# [INFO] Timeouts before and after restart required:
-# https://github.com/appveyor/ci/issues/2482#issuecomment-401995271
-#
-# [NOTE] AppVeyor hasn’t a documentation how to restart AppVeyor worker:
-# https://github.com/appveyor/ci/issues/2483
-#
-# [NOTE] The timeout value of 10 second recommended on AppVeyor issue tracker aren’t enough for me:
-# https://github.com/appveyor/ci/issues/2456#issuecomment-403299903
-# Also, 30 seconds may be not enough:
-# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/51589557
-#
-# [NOTE] Timeout value when I used in 2024 isn’t enough for 2025.
-# [COMPARE] “timeout 30” doesn’t work for the same configuration for me in 2025:
-# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/51589557
-# https://ci.appveyor.com/project/Kristinita/sashaappveyordebugging/builds/48951962
-# Therefore, I use the big value “60”.
-#
-# [NOTE] Timeout isn’t sustainable method.
-# It would be nice if CLI commands in AppVeyor will run after some event on the system instead of timeout.
-- timeout 60
-
-- choco install html-tidy --version=5.6.0 --allow-downgrade --ignore-dependencies
-- npm install --global htmlhint
-- npm install --global htmllint-cli
+- choco install git --yes
 
 platform: x64
