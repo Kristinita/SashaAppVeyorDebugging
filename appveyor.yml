@@ -18,6 +18,9 @@ environment:
 image: Visual Studio 2022
 
 install:
+- reg import appveyor/UnicodeUTF8Worldwide.reg
+- shutdown /r
+- timeout 60
 - choco install git --yes
 
 platform: x64
