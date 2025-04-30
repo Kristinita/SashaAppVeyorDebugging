@@ -8,6 +8,11 @@ build_script:
 
 clone_depth: 1
 
+deploy:
+  provider: Script
+
+deploy_script: echo "Kira Goddess!"
+
 environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
 
