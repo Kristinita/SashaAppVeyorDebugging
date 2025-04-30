@@ -1,5 +1,8 @@
 build_script:
 - git config --list
+- git config user.email appveyor@example.com
+- git config user.name AppVeyor CI user
+- git config --list
 
 cache:
 - "%LOCALAPPDATA%\\npm-cache"
