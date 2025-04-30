@@ -4,7 +4,7 @@ module.exports = (grunt) ->
 
 	kiraDotenvxObject.config
 		path: [
-			"env"
+			".env"
 			".env.credentials"
 		]
 		strict: true
