@@ -1,0 +1,9 @@
+{
+	"devDependencies": {
+		"@dotenvx/dotenvx": "^1.41.0",
+		"coffeescript": "^2.7.0",
+		"gh-pages": "^6.3.0",
+		"grunt": "^1.6.1",
+		"grunt-shell-spawn": "^0.5.0"
+	}
+}
