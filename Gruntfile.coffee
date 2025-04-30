@@ -4,6 +4,7 @@ module.exports = (grunt) ->
 
 	kiraDotenvxObject.config
 		path: [
+			"env"
 			".env.credentials"
 		]
 		strict: true
@@ -15,9 +16,9 @@ module.exports = (grunt) ->
 		shell:
 			"gh-pages":
 				command: "npx gh-pages --branch KiraBranchForDeployment --dist KiraFolderForDeployment --dotfiles --nojekyll --repo
-							https://Kristinita:<%= templates.tokens.kiraTokenGitLabForGhPages %>@github.com\
+							https://<%= templates.tokens.kiraTokenGitHubForGhPages %>@github.com\
 							/Kristinita/KristinitaTests.github.io"
 
 		templates:
 			tokens:
-				kiraTokenGitLabForGhPages: kiraDotenvxObject.get "TOKEN_GITHUB_FOR_GH_PAGES"
+				kiraTokenGitHubForGhPages: kiraDotenvxObject.get "TOKEN_GITHUB_FOR_GH_PAGES"

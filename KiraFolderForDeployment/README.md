@@ -1,1 +1,1 @@
-Kira Empress!
+Kira Champion!
