@@ -1,1 +1,1 @@
-Kira Fantastic!
+Kira Goddess!
