@@ -1,1 +1,1 @@
-Kira Champion!
+Kira Fantastic!
