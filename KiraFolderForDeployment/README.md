@@ -1,1 +1,1 @@
-Kira Goddess!
+Kira Empress!

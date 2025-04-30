@@ -1,8 +1,8 @@
 build_script:
 - git config --list
-- git config user.email appveyor@example.com
-- git config user.name "AppVeyor CI user"
-- git config --list
+# - git config user.email appveyor@example.com
+# - git config user.name "AppVeyor CI user"
+# - git config --list
 
 cache:
 - "%LOCALAPPDATA%\\npm-cache"
@@ -21,7 +21,6 @@ environment:
 image: Visual Studio 2022
 
 install:
-- choco install --yes git nodejs
 - npm install --global grunt-cli
 - npm install
 
