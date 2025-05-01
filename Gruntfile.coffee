@@ -21,7 +21,7 @@ module.exports = (grunt) ->
 							--nojekyll --repo
 							https://Kristinita:<%= templates.tokens.kiraTokenGitHubForGhPages %>@github.com\
 							/Kristinita/KristinitaTests.github.io
-							--user \"KiraGoddess <KiraGoddess@kiragoddess.com>\""
+							--user \"Kristinita <Kristinita@users.noreply.github.com>\""
 
 		templates:
 			tokens:

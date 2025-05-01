@@ -1,1 +1,1 @@
-Kira Super!
+Kira Ideal!
