@@ -1,4 +1,5 @@
 build_script:
+- git config --global commit.gpgsign true
 - git config --global user.signingkey 54C7CC58818F2BA6
 - git config --list
 
