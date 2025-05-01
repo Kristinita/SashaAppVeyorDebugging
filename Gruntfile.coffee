@@ -17,8 +17,9 @@ module.exports = (grunt) ->
 			"gh-pages":
 				command: "npx dotenvx run -- npx gh-pages --branch KiraBranchForDeployment
 							--dist KiraFolderForDeployment --dotfiles
+							--message \"Deployed from AppVeyor CI\"
 							--nojekyll --repo
-							https://<%= templates.tokens.kiraTokenGitHubForGhPages %>@github.com\
+							https://Kristinita:<%= templates.tokens.kiraTokenGitHubForGhPages %>@github.com\
 							/Kristinita/KristinitaTests.github.io
 							--user \"KiraGoddess <KiraGoddess@kiragoddess.com>\""
 
