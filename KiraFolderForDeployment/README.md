@@ -1,1 +1,1 @@
-Kira Ideal!
+Kira Verified!
